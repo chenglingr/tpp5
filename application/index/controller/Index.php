@@ -13,4 +13,8 @@ class Index
     {
         return 'hi';
     }
+        public function hello()
+    {
+        return 'hi';
+    }
 }
