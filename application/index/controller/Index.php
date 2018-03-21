@@ -7,5 +7,12 @@ class Index
     {
     	
     }
+<<<<<<< HEAD
    
+=======
+        public function hello()
+    {
+        return 'hi';
+    }
+>>>>>>> 0aeb6bc0549f9c269d6d9a1a8d525e55c0694109
 }
