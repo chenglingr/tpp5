@@ -41,7 +41,7 @@
 					<li class="">
 						<a href="">
 							<i class="menu-icon fa fa-tachometer"></i>
-							<span class="menu-text"> Dashboard </span>
+							<span class="menu-text"> 我的资料 </span>
 						</a>
 
 						<b class="arrow"></b>
@@ -51,7 +51,7 @@
 						<a href="#" class="dropdown-toggle">
 							<i class="menu-icon fa fa-desktop"></i>
 							<span class="menu-text">
-								UI &amp; Elements
+								管理员
 							</span>
 
 							<b class="arrow fa fa-angle-down"></b>
@@ -62,45 +62,18 @@
 						<ul class="submenu">
 							
 							<li class="">
-								<a href="typography.html">
+								<a href="{:url('admin/index')}">
 									<i class="menu-icon fa fa-caret-right"></i>
-									Typography
+									管理员列表
 								</a>
 
 								<b class="arrow"></b>
 							</li>
 
 							<li class="">
-								<a href="elements.html">
+								<a href="{:url('admin/add')}">
 									<i class="menu-icon fa fa-caret-right"></i>
-									Elements
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-
-							<li class="">
-								<a href="buttons.html">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Buttons &amp; Icons
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-
-							<li class="">
-								<a href="content-slider.html">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Content Sliders
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-
-							<li class="">
-								<a href="treeview.html">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Treeview
+									增加管理员
 								</a>
 
 								<b class="arrow"></b>
@@ -112,7 +85,7 @@
 					<li class="">
 						<a href="#" class="dropdown-toggle">
 							<i class="menu-icon fa fa-list"></i>
-							<span class="menu-text"> Tables </span>
+							<span class="menu-text"> 教师 </span>
 
 							<b class="arrow fa fa-angle-down"></b>
 						</a>
@@ -123,7 +96,7 @@
 							<li class="">
 								<a href="tables.html">
 									<i class="menu-icon fa fa-caret-right"></i>
-									Simple &amp; Dynamic
+									教师列表
 								</a>
 
 								<b class="arrow"></b>
@@ -132,7 +105,7 @@
 							<li class="">
 								<a href="jqgrid.html">
 									<i class="menu-icon fa fa-caret-right"></i>
-									jqGrid plugin
+									增加教师
 								</a>
 
 								<b class="arrow"></b>
@@ -142,8 +115,8 @@
 
 					<li class="">
 						<a href="#" class="dropdown-toggle">
-							<i class="menu-icon fa fa-pencil-square-o"></i>
-							<span class="menu-text"> Forms </span>
+							<i class="menu-icon fa fa-calendar"></i>
+							<span class="menu-text"> 班级 </span>
 
 							<b class="arrow fa fa-angle-down"></b>
 						</a>
@@ -154,7 +127,7 @@
 							<li class="">
 								<a href="form-elements.html">
 									<i class="menu-icon fa fa-caret-right"></i>
-									Form Elements
+									班级列表
 								</a>
 
 								<b class="arrow"></b>
@@ -163,54 +136,80 @@
 							<li class="">
 								<a href="form-elements-2.html">
 									<i class="menu-icon fa fa-caret-right"></i>
-									Form Elements 2
+									增加班级
 								</a>
 
 								<b class="arrow"></b>
 							</li>
 
-							<li class="">
-								<a href="form-wizard.html">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Wizard &amp; Validation
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-
-							<li class="">
-								<a href="wysiwyg.html">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Wysiwyg &amp; Markdown
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-
-							<li class="">
-								<a href="dropzone.html">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Dropzone File Upload
-								</a>
-
-								<b class="arrow"></b>
-							</li>
 						</ul>
 					</li>
-
 					<li class="">
-						<a href="widgets.html">
-							<i class="menu-icon fa fa-list-alt"></i>
-							<span class="menu-text"> Widgets </span>
+						<a href="#" class="dropdown-toggle">
+							<i class="menu-icon fa fa-pencil-square-o"></i>
+							<span class="menu-text"> 学生</span>
+
+							<b class="arrow fa fa-angle-down"></b>
 						</a>
 
 						<b class="arrow"></b>
-					</li>
 
+						<ul class="submenu">
+							<li class="">
+								<a href="form-elements.html">
+									<i class="menu-icon fa fa-caret-right"></i>
+									学生列表
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+
+							<li class="">
+								<a href="form-elements-2.html">
+									<i class="menu-icon fa fa-caret-right"></i>
+									增加学生
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+
+						</ul>
+					</li>
+					<li class="">
+						<a href="#" class="dropdown-toggle">
+							<i class="menu-icon fa fa-list-alt"></i>
+							<span class="menu-text"> 课程 </span>
+
+							<b class="arrow fa fa-angle-down"></b>
+						</a>
+
+						<b class="arrow"></b>
+
+						<ul class="submenu">
+							<li class="">
+								<a href="form-elements.html">
+									<i class="menu-icon fa fa-caret-right"></i>
+									课程列表
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+
+							<li class="">
+								<a href="form-elements-2.html">
+									<i class="menu-icon fa fa-caret-right"></i>
+									增加课程
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+
+						</ul>
+					</li>
 					<li class="">
 						<a href="gallery.html">
 							<i class="menu-icon fa fa-picture-o"></i>
-							<span class="menu-text"> Gallery </span>
+							<span class="menu-text"> 公告 </span>
 						</a>
 
 						<b class="arrow"></b>

@@ -2,7 +2,7 @@
 namespace app\admin\controller;
 use think\Controller;
 
-class HomeWork extends Controller{
+class HomeWork extends Base{
 
 
 }
