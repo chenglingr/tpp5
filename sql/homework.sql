@@ -3,7 +3,7 @@ create table `work_admin`(
 `id` int(11) unsigned not null AUTO_INCREMENT,
 `num` varchar(20) not null default '' COMMENT '工号',
 `username` varchar(20) not null default  '' COMMENT '姓名',
-`password` varchar(20) not null default '' COMMENT '密码',
+`password` varchar(32) not null default '' COMMENT '密码',
 `code` varchar(10) not null default ''  COMMENT '密码加密码',
 `tel` varchar(20) not null default '' COMMENT '电话',
 `email` varchar(20) not null default '' COMMENT '邮箱',

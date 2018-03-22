@@ -2,7 +2,7 @@
 <html lang="en">
 	<head>
 		
-		<title>Blank Page - Ace Admin</title>
+		<title>教师列表</title>
 		{include file="public/header"}
 		
 	</head>
@@ -23,7 +23,7 @@
 							</li>
 
 							<li>
-								<a href="#">管理员</a>
+								<a href="#">教师</a>
 							</li>
 							<li class="active">列表</li>
 						</ul><!-- /.breadcrumb -->
@@ -43,12 +43,13 @@
 						<div class="row">
 							<div class="col-xs-12">
 								<!-- PAGE CONTENT BEGINS -->
- 									{if condition="$admins"}
+ 									{if condition="$teachers"}
 										<table id="simple-table" class="table  table-bordered table-hover">
 											<thead>
 												<tr>
 													<th>工号</th>
 													<th>用户名</th>
+													<th>部门</th>
 													<th class="hidden-480">邮箱</th>
 													<th class="hidden-480">电话</th>
 													<th class="hidden-480">注册时间</th>
@@ -60,10 +61,11 @@
 
 											<tbody>
 												
-												{volist name="admins" id="vo"}
+												{volist name="teachers" id="vo"}
 												<tr>
 													<td><a href="#">{$vo.num}</a>	</td>
 													<td>{$vo.username}</td>
+													<td>{$vo.depart}</td>
 													<td class="hidden-480">{$vo.email}</td>
 													<td class="hidden-480">{$vo.tel}</td>
 													<td class="hidden-480">{$vo.create_time}</td>
@@ -132,7 +134,7 @@
 											{else/}
 												<span style="color: red;font-size: 24px;">没有数据</span>
 											{/if}
-										{:pagination($admins)}
+										{:pagination($teachers)}
 								<!-- PAGE CONTENT ENDS -->
 							</div><!-- /.col -->
 						</div><!-- /.row -->

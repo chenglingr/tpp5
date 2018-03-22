@@ -5,6 +5,7 @@ class Login extends Controller
 {
 	public function index()
 	{
+		
 		if(request()->post()){
 			//登录逻辑
 			//获取相关信息
@@ -25,7 +26,7 @@ class Login extends Controller
 				//admin是作用域
 				session('Account',$ret,'admin');
 				session('AccountType',1,'admin');
-				return $this->success('登陆成功',url('index/index'));//管理员zhuye
+				return $this->success('登陆成功',url('admin/index'));//管理员zhuye
             }
             if($usertype=="1"){
 	            //校验输入
@@ -42,7 +43,7 @@ class Login extends Controller
 				//admin是作用域
 				session('Account',$ret,'admin');
 				session('AccountType',1,'admin');
-				return $this->success('登陆成功',url('index/index'));//教师zhuye
+				return $this->success('登陆成功',url('teacher/main'));//教师zhuye
             }
             if($usertype=="2"){
 	            //校验输入
@@ -67,8 +68,8 @@ class Login extends Controller
 			$account=session('Account','','admin');
             $accountType=session('AccountType','','admin');
 			if($account&&$account->id&&$accountType){
-				if( $accountType==0) {return $this->redirect('index/index');}//管理员主页
-				if( $accountType==1) {return $this->redirect('index/index');}//教师主页
+				if( $accountType==0) {return $this->redirect('admin/index');}//管理员主页
+				if( $accountType==1) {return $this->redirect('teacher/main');}//教师主页
 				if( $accountType==2) {return $this->redirect('index/index');}//学生主页
 			}
 		

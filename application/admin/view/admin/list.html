@@ -2,7 +2,7 @@
 <html lang="en">
 	<head>
 		
-		<title>Blank Page - Ace Admin</title>
+		<title>管理员</title>
 		{include file="public/header"}
 		
 	</head>
@@ -25,7 +25,7 @@
 							<li>
 								<a href="#">管理员</a>
 							</li>
-							<li class="active">列表</li>
+							<li class="active">禁用管理员列表</li>
 						</ul><!-- /.breadcrumb -->
 
 						<div class="nav-search" id="nav-search">
@@ -60,7 +60,7 @@
 
 											<tbody>
 												
-												{volist name="admins" id="vo"}
+												{volist name="admins" id="vo" }
 												<tr>
 													<td><a href="#">{$vo.num}</a>	</td>
 													<td>{$vo.username}</td>

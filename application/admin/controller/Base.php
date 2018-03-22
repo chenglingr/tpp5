@@ -13,7 +13,9 @@ class Base extends Controller
 
 			$this->error('请先登录','login/index');
 		}
-		return $isLogin;
+
+		$this->assign('user',$this->getLoginUser());
+	//	return $isLogin;
 	}
 	public function isLogin()
 	{

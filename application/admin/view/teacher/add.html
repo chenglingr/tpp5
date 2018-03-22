@@ -2,7 +2,7 @@
 <html lang="en">
 	<head>
 		
-		<title>Blank Page - Ace Admin</title>
+		<title>教师管理</title>
 		{include file="public/header"}
 		
 	</head>
@@ -23,7 +23,7 @@
 							</li>
 
 							<li>
-								<a href="#">管理员</a>
+								<a href="#">教师</a>
 							</li>
 							<li class="active">增加</li>
 						</ul><!-- /.breadcrumb -->
@@ -46,13 +46,13 @@
 										<div class="widget-main">
 											<h4 class="header green lighter bigger">
 												<i class="ace-icon fa fa-users blue"></i>
-												新增管理员
+												新增任课教师
 											</h4>
 
 											<div class="space-6"></div>
-											<p> 输入管理员基本信息: </p>
+											<p> 输入任课教师基本信息: </p>
 
-											<form action="{:url('admin/save')}" method="post">
+											<form action="{:url('teacher/save')}" method="post">
 												<fieldset>
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
@@ -92,10 +92,16 @@
 															<i class="ace-icon fa fa-envelope"></i>
 														</span>
 													</label>
+													
+													<label class="block clearfix">
+														<select class="form-control" name="depart" id="form-field-select-1">
+															
+															{volist name="departs" id="vo"}
+																<option value="{$key}">{$vo}</option>
+															{/volist}		
+														</select>
+													</label>
 													<div class="space-24"></div>
-
-												
-
 													<div class="clearfix">
 														<button type="reset" class="width-30 pull-left btn btn-sm">
 															<i class="ace-icon fa fa-refresh"></i>

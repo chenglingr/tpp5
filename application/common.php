@@ -10,3 +10,24 @@
 // +----------------------------------------------------------------------
 
 // 应用公共文件
+function status($status)
+{
+	if($status==1){
+		$str="<span class='label label-success radius'>正常</span>";
+	}else if($status==0){
+		$str="<span class='label label-danger radius'>删除</span>";
+	}else{
+		$str="<span class='label label-danger radius'>禁用</span>";
+	}
+	return $str;
+}
+
+//通用的分页样式
+function pagination($obj){
+	if(!$obj){
+		return '';
+	}
+	//可进行参数连接
+	$params=request()->param();
+	return '<div class="cl pd-5 bg-1 bk-gray mt-20 tp5-o2o">'.$obj->appends($params)->render().'</div>';
+}
