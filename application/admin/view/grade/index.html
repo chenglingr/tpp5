@@ -2,7 +2,7 @@
 <html lang="en">
 	<head>
 		
-		<title>管理员</title>
+		<title>班级列表</title>
 		{include file="public/header"}
 		
 	</head>
@@ -23,9 +23,9 @@
 							</li>
 
 							<li>
-								<a href="#">管理员</a>
+								<a href="#">班级</a>
 							</li>
-							<li class="active">禁用管理员列表</li>
+							<li class="active">列表</li>
 						</ul><!-- /.breadcrumb -->
 
 						<div class="nav-search" id="nav-search">
@@ -43,15 +43,13 @@
 						<div class="row">
 							<div class="col-xs-12">
 								<!-- PAGE CONTENT BEGINS -->
- 									{if condition="$admins"}
+ 									{if condition="$grades"}
 										<table id="simple-table" class="table  table-bordered table-hover">
 											<thead>
 												<tr>
-													<th>工号</th>
-													<th>用户名</th>
-													<th class="hidden-480">邮箱</th>
-													<th class="hidden-480">电话</th>
-													<th class="hidden-480">注册时间</th>
+													<th>班级名</th>
+													<th>部门</th>
+																								
 													<th >状态</th>
 
 													<th></th>
@@ -60,19 +58,27 @@
 
 											<tbody>
 												
-												{volist name="admins" id="vo" }
+												{volist name="grades" id="vo"}
 												<tr>
-													<td><a href="#">{$vo.num}</a>	</td>
-													<td>{$vo.username}</td>
-													<td class="hidden-480">{$vo.email}</td>
-													<td class="hidden-480">{$vo.tel}</td>
-													<td class="hidden-480">{$vo.create_time}</td>
+													<td><a href="#">{$vo.name}</a>	</td>
+													
+													<td>{$vo.depart}</td>
+													
 													<td >
 														{$vo.status|status}
 													</td>
 
 													<td>
 														<div class="hidden-sm hidden-xs btn-group">
+																<button class="btn btn-xs btn-success">
+																<a href="{:url('student/index',['id'=>$vo.id])}" class="tooltip-info" data-rel="tooltip" title="View">
+																			<span class="blue">
+																			学生
+																			</span>
+																		</a>
+															</button>
+																		
+																	
 															<button class="btn btn-xs btn-success">
 																<i class="ace-icon fa fa-check bigger-120"></i>
 															</button>
@@ -85,9 +91,9 @@
 																<i class="ace-icon fa fa-trash-o bigger-120"></i>
 															</button>
 
-															<a href="{:url('admin/status',['id'=>$vo.id,'status'=>1])}"  class="btn btn-xs btn-warning">
+															<button class="btn btn-xs btn-warning">
 																<i class="ace-icon fa fa-flag bigger-120"></i>
-															</a>
+															</button>
 														</div>
 
 														<div class="hidden-md hidden-lg">
@@ -97,6 +103,7 @@
 																</button>
 
 																<ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
+																
 																	<li>
 																		<a href="#" class="tooltip-info" data-rel="tooltip" title="View">
 																			<span class="blue">
@@ -132,7 +139,7 @@
 											{else/}
 												<span style="color: red;font-size: 24px;">没有数据</span>
 											{/if}
-										{:pagination($admins)}
+										{:pagination($grades)}
 								<!-- PAGE CONTENT ENDS -->
 							</div><!-- /.col -->
 						</div><!-- /.row -->

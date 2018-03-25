@@ -81,13 +81,13 @@
 																<i class="ace-icon fa fa-pencil bigger-120"></i>
 															</button>
 
-															<button class="btn btn-xs btn-danger">
+															<a href="{:url('admin/status',['id'=>$vo.id,'status'=>0])}" class="btn btn-xs btn-danger">
 																<i class="ace-icon fa fa-trash-o bigger-120"></i>
-															</button>
+															</a>
 
-															<button class="btn btn-xs btn-warning">
+															<a href="{:url('admin/status',['id'=>$vo.id,'status'=>2])}"  class="btn btn-xs btn-warning">
 																<i class="ace-icon fa fa-flag bigger-120"></i>
-															</button>
+															</a>
 														</div>
 
 														<div class="hidden-md hidden-lg">
@@ -145,7 +145,7 @@
 		</div><!-- /.main-container -->
 		{include file="public/script"}
 		
-
+	
 		<!-- inline scripts related to this page -->
 
 		

@@ -63,7 +63,7 @@ key grade_id(`grade_id`)
 create table `work_student`(
 `id` int(11) unsigned not null AUTO_INCREMENT,
 `num` varchar(20) not null default '',
-`name` varchar(20) not null default '',
+`username` varchar(20) not null default '',
 `password` varchar(32) not null default '',
 `code` varchar(10) not null default '',
 `depart` varchar(20) not null default '信息工程学院',

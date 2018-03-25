@@ -9,6 +9,7 @@ class Admin extends Base{
 	}
 */
 	public function index(){
+		
 		$admins=model('Admin')-> getAdminByStatus(1);
 	//	$this->assign('user',$this->getLoginUser());
 //$this->assign('admins',$admins);

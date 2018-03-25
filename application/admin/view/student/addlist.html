@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		
+		<title>学生管理</title>
+		{include file="public/header"}
+			<link rel="stylesheet" href="__STATIC__/assets/css/jquery-ui.custom.min.css" />
+	</head>
+
+	<body class="no-skin">
+
+		{include file="public/nav"}
+		<div class="main-container ace-save-state" id="main-container">
+
+		{include file="public/menu"}
+			<div class="main-content">
+				<div class="main-content-inner">
+					<div class="breadcrumbs ace-save-state" id="breadcrumbs">
+						<ul class="breadcrumb">
+							<li>
+								<i class="ace-icon fa fa-home home-icon"></i>
+								<a href="#">首页</a>
+							</li>
+
+							<li>
+								<a href="#">学生</a>
+							</li>
+							<li class="active">批量增加</li>
+						</ul><!-- /.breadcrumb -->
+
+						<div class="nav-search" id="nav-search">
+							<form class="form-search">
+								<span class="input-icon">
+									<input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
+									<i class="ace-icon fa fa-search nav-search-icon"></i>
+								</span>
+							</form>
+						</div><!-- /.nav-search -->
+					</div>
+
+					<div class="page-content">
+						{include file="public/settings"}
+						<div class="row">
+							<div class="col-xs-12">
+								<!-- PAGE CONTENT BEGINS -->
+									<div class="widget-main">
+														<div class="form-group">
+															<div class="col-xs-12">
+																<input type="file" id="id-input-file-2" />
+															</div>
+														</div>
+
+														<div class="form-group">
+															<div class="col-xs-12">
+																<input multiple="" type="file" id="id-input-file-3" />
+															</div>
+														</div>
+
+														
+													</div>
+												
+
+								<!-- PAGE CONTENT ENDS -->
+							</div><!-- /.col -->
+						</div><!-- /.row -->
+					</div><!-- /.page-content -->
+				</div>
+			</div><!-- /.main-content -->
+
+
+		{include file="public/footer"}
+		</div><!-- /.main-container -->
+		{include file="public/script"}
+		<script type="text/javascript">
+	//enctype="multipart/form-data" https://bbs.csdn.net/topics/391821296
+
+					$('#id-input-file-3').ace_file_input({
+					style: 'well',
+					btn_choose: 'Drop files here or click to choose',
+					btn_change: null,
+					no_icon: 'ace-icon fa fa-cloud-upload',
+					droppable: true,
+					thumbnail: 'small'//large | fit
+					//,icon_remove:null//set null, to hide remove/reset button
+					/**,before_change:function(files, dropped) {
+						//Check an example below
+						//or examples/file-upload.html
+						return true;
+					}*/
+					/**,before_remove : function() {
+						return true;
+					}*/
+					,
+					preview_error : function(filename, error_code) {
+						//name of the file that failed
+						//error_code values
+						//1 = 'FILE_LOAD_FAILED',
+						//2 = 'IMAGE_LOAD_FAILED',
+						//3 = 'THUMBNAIL_FAILED'
+						//alert(error_code);
+					}
+			
+				}).on('change', function(){
+					//console.log($(this).data('ace_input_files'));
+					//console.log($(this).data('ace_input_method'));
+				});
+
+
+				$('#id-input-file-2').ace_file_input({
+					no_file:'No File ...',
+					btn_choose:'Choose',
+					btn_change:'Change',
+					droppable:false,
+					onchange:null,
+					thumbnail:false //| true | large
+					//whitelist:'gif|png|jpg|jpeg'
+					//blacklist:'exe|php'
+					//onchange:''
+					//
+				});
+			
+				
+</script>
+	</body>
+</html>

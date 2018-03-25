@@ -3,6 +3,22 @@ namespace app\common\model;
 use think\Model;
 
 class Notice extends BaseModel{
-
+	public function getNoticeByStatus($status=1){
+		$data=[
+			'status'=>$status,			
+		];
+		if($status!=1){
+			$data=['status'=>['neq',1],];
+		}
+			
+		$order=[
+			'id'=>'desc',
+		];
+		$result= $this->where($data)
+					->order($order)
+					->paginate();
+					
+		return $result;
+	}
 	
 }

@@ -21,4 +21,19 @@ class Teacher extends BaseModel{
 					
 		return $result;
 	}
+	public function getAllTeacher(){
+		$data=[
+			'status'=>1,			
+		];
+	
+		$order=[
+			'username'=>'desc',
+			'id'=>'desc',
+		];
+		$result= $this->where($data)
+					->order($order)
+					->select();
+					
+		return $result;
+	}
 }

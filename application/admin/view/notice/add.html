@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		
+		<title>公告管理</title>
+		{include file="public/header"}
+		<link rel="stylesheet" href="__STATIC__/assets/css/jquery-ui.custom.min.css" />
+	
+	</head>
+
+	<body class="no-skin">
+
+		{include file="public/nav"}
+		<div class="main-container ace-save-state" id="main-container">
+
+		{include file="public/menu"}
+			<div class="main-content">
+				<div class="main-content-inner">
+					<div class="breadcrumbs ace-save-state" id="breadcrumbs">
+						<ul class="breadcrumb">
+							<li>
+								<i class="ace-icon fa fa-home home-icon"></i>
+								<a href="#">首页</a>
+							</li>
+
+							<li>
+								<a href="#">公告</a>
+							</li>
+							<li class="active">增加</li>
+						</ul><!-- /.breadcrumb -->
+
+						<div class="nav-search" id="nav-search">
+							<form class="form-search">
+								<span class="input-icon">
+									<input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
+									<i class="ace-icon fa fa-search nav-search-icon"></i>
+								</span>
+							</form>
+						</div><!-- /.nav-search -->
+					</div>
+
+					<div class="page-content">
+						{include file="public/settings"}
+						<div class="row">
+							<div class="col-xs-12">
+								<!-- PAGE CONTENT BEGINS -->
+										<div class="widget-main">
+											<h4 class="header green lighter bigger">
+												<i class="ace-icon fa fa-users blue"></i>
+												新增公告
+											</h4>
+
+											<div class="space-6"></div>
+											<p> 输入公告信息: </p>
+
+											<form action="{:url('notice/save')}" id="addnotice" method="post">
+												<fieldset>
+													<label class="block clearfix">
+														<span class="block input-icon input-icon-right">
+															<input type="text" name="name" class="form-control" placeholder="公告标题" />
+															<i class="ace-icon fa fa-plus-square-o"></i>
+														</span>
+													</label>				
+
+													
+														
+								<h6 class="header clearfix">
+									公告内容
+									<span class="block pull-right">
+										<small class="grey middle">选择风格: &nbsp;</small>
+
+										<span class="btn-toolbar inline middle no-margin">
+											<span data-toggle="buttons" class="btn-group no-margin">
+												<label class="btn btn-sm btn-yellow">
+													1<input type="radio" value="1" />
+												</label>
+
+												<label class="btn btn-sm btn-yellow active">
+													2<input type="radio" value="2" />
+												</label>
+
+												<label class="btn btn-sm btn-yellow">
+													3<input type="radio" value="3" />
+												</label>
+
+												<label class="btn btn-sm btn-yellow">
+													4<input type="radio" value="4" />
+												</label>
+											</span>
+										</span>
+									</span>
+								</h6>
+
+								<div class="wysiwyg-editor"  id="editor1"></div>
+								<input type='hidden' name='content' id='content' value=''>
+													
+								<div class="hr hr-double dotted"></div>
+	
+													
+													<div class="space-24"></div>
+													<div class="clearfix">
+														<button type="reset" class="width-30 pull-left btn btn-sm">
+															<i class="ace-icon fa fa-refresh"></i>
+															<span class="bigger-110">重置</span>
+														</button>
+
+														<button type="button" onclick="copyNewsHidden()" class="width-65 pull-right btn btn-sm btn-success">
+															<span class="bigger-110">添加</span>
+
+															<i class="ace-icon fa fa-arrow-right icon-on-right"></i>
+														</button>
+													</div>
+												</fieldset>
+											</form>
+										</div>
+
+								<!-- PAGE CONTENT ENDS -->
+							</div><!-- /.col -->
+						</div><!-- /.row -->
+					</div><!-- /.page-content -->
+				</div>
+			</div><!-- /.main-content -->
+
+
+			{include file="public/footer"}
+		</div><!-- /.main-container -->
+		<!-- basic scripts -->
+{include file="public/script"}
+
+		<!-- page specific plugin scripts -->
+		<script src="__STATIC__/assets/js/jquery-ui.custom.min.js"></script>
+		<script src="__STATIC__/assets/js/jquery.ui.touch-punch.min.js"></script>
+		
+		<script src="__STATIC__/assets/js/jquery.hotkeys.index.min.js"></script>
+		<script src="__STATIC__/assets/js/bootstrap-wysiwyg.min.js"></script>
+		<script src="__STATIC__/assets/js/bootbox.js"></script>
+
+		<!-- ace scripts -->
+	
+
+		<!-- inline scripts related to this page -->
+	<script src="__STATIC__/js/aceAdminEditor.js"></script>
+	<script type="text/javascript">
+		function copyNewsHidden(){
+
+		    var  newsEditor1=$('#editor1').html();
+		    var content=$('#content').val(newsEditor1);
+
+		    $('#addnotice').submit();
+		}
+
+		/* shangchuan https://blog.csdn.net/u013032788/article/details/50414031*/
+/*https://blog.csdn.net/liayn523/article/details/73770293
+https://blog.csdn.net/u013032788/article/details/50413762 quzhi
+
+*/
+	</script>
+	</body>
+</html>

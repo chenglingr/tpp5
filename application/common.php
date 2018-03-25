@@ -31,3 +31,17 @@ function pagination($obj){
 	$params=request()->param();
 	return '<div class="cl pd-5 bg-1 bk-gray mt-20 tp5-o2o">'.$obj->appends($params)->render().'</div>';
 }
+function getTeacherName($id){
+	if(!intval($id)){
+    		return '无效老师';
+    	}
+	$teacher=model('Teacher')->get($id);
+	return $teacher->username;
+}
+function getGradeName($id){
+	if(!intval($id)){
+    		return '无效班级';
+    	}
+	$grade=model('Grade')->get($id);
+	return $grade->name;
+}

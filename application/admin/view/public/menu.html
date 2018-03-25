@@ -132,7 +132,7 @@
 
 						<ul class="submenu">
 							<li class="">
-								<a href="form-elements.html">
+								<a href="{:url('grade/index')}">
 									<i class="menu-icon fa fa-caret-right"></i>
 									班级列表
 								</a>
@@ -141,7 +141,7 @@
 							</li>
 
 							<li class="">
-								<a href="form-elements-2.html">
+								<a href="{:url('grade/add')}">
 									<i class="menu-icon fa fa-caret-right"></i>
 									增加班级
 								</a>
@@ -163,7 +163,7 @@
 
 						<ul class="submenu">
 							<li class="">
-								<a href="form-elements.html">
+								<a href="{:url('student/index')}">
 									<i class="menu-icon fa fa-caret-right"></i>
 									学生列表
 								</a>
@@ -172,9 +172,17 @@
 							</li>
 
 							<li class="">
-								<a href="form-elements-2.html">
+								<a href="{:url('student/add')}">
 									<i class="menu-icon fa fa-caret-right"></i>
 									增加学生
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+							<li class="">
+								<a href="{:url('student/addlist')}">
+									<i class="menu-icon fa fa-caret-right"></i>
+									批量导入
 								</a>
 
 								<b class="arrow"></b>
@@ -194,7 +202,7 @@
 
 						<ul class="submenu">
 							<li class="">
-								<a href="form-elements.html">
+								<a href="{:url('course/index')}">
 									<i class="menu-icon fa fa-caret-right"></i>
 									课程列表
 								</a>
@@ -203,7 +211,7 @@
 							</li>
 
 							<li class="">
-								<a href="form-elements-2.html">
+								<a href="{:url('course/add')}">
 									<i class="menu-icon fa fa-caret-right"></i>
 									增加课程
 								</a>
@@ -214,12 +222,36 @@
 						</ul>
 					</li>
 					<li class="">
-						<a href="gallery.html">
+					
+						<a href="#" class="dropdown-toggle">
 							<i class="menu-icon fa fa-picture-o"></i>
 							<span class="menu-text"> 公告 </span>
+
+							<b class="arrow fa fa-angle-down"></b>
 						</a>
 
 						<b class="arrow"></b>
+
+						<ul class="submenu">
+							<li class="">
+								<a href="{:url('notice/index')}">
+									<i class="menu-icon fa fa-caret-right"></i>
+									公告列表
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+
+							<li class="">
+								<a href="{:url('notice/add')}">
+									<i class="menu-icon fa fa-caret-right"></i>
+									增加公告
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+
+						</ul>
 					</li>
 
 				

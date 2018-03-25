@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		
+		<title>课程管理</title>
+		{include file="public/header"}
+
+			<link rel="stylesheet" href="__STATIC__/assets/css/jquery-ui.custom.min.css" />
+		<link rel="stylesheet" href="__STATIC__/assets/css/chosen.min.css" />
+		<link rel="stylesheet" href="__STATIC__/assets/css/bootstrap-datepicker3.min.css" />
+		<link rel="stylesheet" href="__STATIC__/assets/css/bootstrap-timepicker.min.css" />
+		<link rel="stylesheet" href="__STATIC__/assets/css/daterangepicker.min.css" />
+		<link rel="stylesheet" href="__STATIC__/assets/css/bootstrap-datetimepicker.min.css" />
+		<link rel="stylesheet" href="__STATIC__/assets/css/bootstrap-colorpicker.min.css" />
+		
+	</head>
+
+	<body class="no-skin">
+
+		{include file="public/nav"}
+		<div class="main-container ace-save-state" id="main-container">
+
+		{include file="public/menu"}
+			<div class="main-content">
+				<div class="main-content-inner">
+					<div class="breadcrumbs ace-save-state" id="breadcrumbs">
+						<ul class="breadcrumb">
+							<li>
+								<i class="ace-icon fa fa-home home-icon"></i>
+								<a href="#">首页</a>
+							</li>
+
+							<li>
+								<a href="#">课程</a>
+							</li>
+							<li class="active">增加</li>
+						</ul><!-- /.breadcrumb -->
+
+						<div class="nav-search" id="nav-search">
+							<form class="form-search">
+								<span class="input-icon">
+									<input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
+									<i class="ace-icon fa fa-search nav-search-icon"></i>
+								</span>
+							</form>
+						</div><!-- /.nav-search -->
+					</div>
+
+					<div class="page-content">
+						{include file="public/settings"}
+						<div class="row">
+							<div class="col-xs-12">
+								<!-- PAGE CONTENT BEGINS -->
+										<div class="widget-main">
+											<h4 class="header green lighter bigger">
+												<i class="ace-icon fa fa-users blue"></i>
+												新增课程
+											</h4>
+
+											<div class="space-6"></div>
+											<p> 输入课程基本信息: </p>
+
+											<form action="{:url('course/save')}" method="post">
+												<fieldset>
+													<label class="block clearfix">
+														<span class="block input-icon input-icon-right">
+															<input type="text" name="name" class="form-control" placeholder="课程名称" />
+															<i class="ace-icon fa fa-life-ring"></i>
+														</span>
+													</label>
+													<label class="block clearfix">
+														<span class="block input-icon input-icon-right">
+															<div class="row">
+															<div class="col-xs-8 col-sm-11">
+																<div class="input-daterange input-group">
+																	<input type="text" class="input-sm form-control" name="start_time" placeholder="起始日期" />
+																	<span class="input-group-addon">
+																		<i class="fa fa-exchange"></i>
+																	</span>
+
+																	<input type="text" class="input-sm form-control" placeholder="结束日期" name="end_time" />
+																</div>
+															</div>
+														</div>
+													
+														</span>
+													</label>				
+
+													
+									
+													<label class="block clearfix">
+														<select class="depart form-control" name="depart" id="form-field-select-1">
+															<option value="0">--请选择所属部门--</option>
+															{volist name="departs" id="vo"}
+																<option value="{$key}">{$vo}</option>
+															{/volist}		
+														</select>
+													</label>
+													<label class="block clearfix">
+														<select class="se_grade_id form-control" name="grade_id" id="form-field-select-1">
+														
+														</select>
+													</label>
+													<label class="block clearfix">
+														<select class="form-control" name="teacher_id" id="form-field-select-1">
+															<option value="0">--请选择任课老师--</option>
+															{volist name="teachers" id="vo"}
+																<option value="{$vo.id}">{$vo.username}</option>
+															{/volist}		
+														</select>
+													</label>
+
+													<div class="space-24"></div>
+													<div class="clearfix">
+														<button type="reset" class="width-30 pull-left btn btn-sm">
+															<i class="ace-icon fa fa-refresh"></i>
+															<span class="bigger-110">重置</span>
+														</button>
+
+														<button type="submit" class="width-65 pull-right btn btn-sm btn-success">
+															<span class="bigger-110">添加</span>
+
+															<i class="ace-icon fa fa-arrow-right icon-on-right"></i>
+														</button>
+													</div>
+												</fieldset>
+											</form>
+										</div>
+
+								<!-- PAGE CONTENT ENDS -->
+							</div><!-- /.col -->
+						</div><!-- /.row -->
+					</div><!-- /.page-content -->
+				</div>
+			</div><!-- /.main-content -->
+
+
+		{include file="public/footer"}
+		</div><!-- /.main-container -->
+		{include file="public/script"}
+	<script type="text/javascript">
+		/**定义页面全局变量**/
+		var SCOPE = {
+			"grade_url" : "{:url('api/grade/getGradesByDepartName')}",
+
+		};
+	</script>	
+
+		{load href="__STATIC__/js/common.js" /}
+
+		<script src="__STATIC__/assets/js/bootstrap-datepicker.min.js"></script>
+		<script src="__STATIC__/assets/js/bootstrap-timepicker.min.js"></script>
+		<script src="__STATIC__/assets/js/moment.min.js"></script>
+		<script src="__STATIC__/assets/js/daterangepicker.min.js"></script>
+		<script src="__STATIC__/assets/js/bootstrap-datetimepicker.min.js"></script>
+		<script type="text/javascript">
+			$('.input-daterange').datepicker({autoclose:true});
+		</script>
+		<!-- inline scripts related to this page -->
+	</body>
+</html>

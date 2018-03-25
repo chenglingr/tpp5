@@ -25,7 +25,7 @@ class Login extends Controller
 							
 				//admin是作用域
 				session('Account',$ret,'admin');
-				session('AccountType',1,'admin');
+				session('AccountType',0,'admin');
 				return $this->success('登陆成功',url('admin/index'));//管理员zhuye
             }
             if($usertype=="1"){
