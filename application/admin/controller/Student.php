@@ -1,6 +1,8 @@
 <?php
 namespace app\admin\controller;
 use think\Controller;
+/*use PHPExcel_IOFactory;  
+use PHPExcel; */
 
 class Student extends Base{
 	public function index($id=0){
@@ -60,7 +62,10 @@ class Student extends Base{
 		//return $this->fetch('',['departs'=>$departs,'grades'=>$grades]);
 	}
 	public function addlist(){
-		return $this->fetch();
+		
+		$departs=config('depart.depart_name');
+		
+		return $this->fetch('',['departs'=>$departs]);
 /*		$user = new User;
 $list = [
     ['name'=>'thinkphp','email'=>'thinkphp@qq.com'],
@@ -68,6 +73,93 @@ $list = [
 ];
 $user->saveAll($list);*/
 	}
+	//批量导入 excel
+	public function savelist(){
+		if(!request()->post()){
+			$this->error('请求错误');
+		}
+		$data=input('post.');
+		if((!input('post.grade_id'))||input('post.grade_id')==-1)
+		{
+			$this->error('请先选择有效班级');
+		}
+  //获取表单上传文件 
+ 		$file = request()->file('studentlist');  
+  		$info = $file->validate(['ext' => 'xlsx,xls'])->move(ROOT_PATH . 'public' . DS . 'uploads' . DS . 'student');  
+
+  		  //数据为空返回错误  
+        if(empty($info)){  
+            $output['status'] = false;  
+            $output['info'] = '导入数据失败~';  
+            $this->ajaxReturn($output);  
+        } 
+
+        //获取文件名  
+        $exclePath = $info->getSaveName();  
+        //上传文件的地址  
+        $filename = ROOT_PATH . 'public' . DS . 'uploads' . DS . 'student'. DS . $exclePath;  
+          //判断截取文件  
+        $extension = strtolower( pathinfo($filename, PATHINFO_EXTENSION) ); 
+
+          $delfilename =  '/thinkphp5/public/uploads/student/' . strtr($exclePath,'\\','/'); 
+
+
+vendor("PHPExcel.PHPExcel.PHPExcel");
+vendor("PHPExcel.PHPExcel.IOFactory");
+        //区分上传文件格式  
+        if($extension == 'xlsx') {  
+            $objReader =\PHPExcel_IOFactory::createReader('Excel2007');  
+            $objPHPExcel = $objReader->load($filename, $encode = 'utf-8');  
+        }else if($extension == 'xls'){  
+            $objReader =\PHPExcel_IOFactory::createReader('Excel5');  
+            $objPHPExcel = $objReader->load($filename, $encode = 'utf-8');  
+        }  
+  
+        $excel_array = $objPHPExcel->getsheet(0)->toArray();   //转换为数组格式   
+
+          array_shift($excel_array);  
+         // array_shift($excel_array);  
+       
+          foreach($excel_array as $k=>$v) {  
+          
+                $res[$k]['num']     = $v[0];  
+                $res[$k]['username']  = $v[1];  
+				$res[$k]['tel']=$v[2]?$v[2]:"";
+                 
+                $res[$k]['email'] = $v[3]? $v[3]:"";  
+                $res[$k]['major'] = $v[4]? $v[4]:"";  
+ 				$res[$k]['code'] =mt_rand(100,10000);
+ 				$res[$k]['password'] =md5('123456'. $res[$k]['code']);
+ 				$res[$k]['depart'] =$data['depart'];
+ 				$res[$k]['grade_id'] =$data['grade_id'];        
+              
+        }  
+   		$ok=true;
+		 try{
+			$ok=  Model('Student')->addStudentList($res);
+		 }catch(\Exception $e){
+  			$ok=false;
+		 }finally{
+ 			if (file_exists($delfilename)) {  
+           	 return unlink($delfilename);  
+          	} 
+		 }
+		
+     	if($ok){
+			$this->success("批量添加成功",url('student/index',['id'=>$data['grade_id']]));
+      	}
+      	else
+     	{
+      		$this->error('批量导入错误');
+     	}
+
+ // $this->ajaxReturn($output);
+		
+     
+
+     
+	}
+
 	public function save(){
 		if(!request()->post()){
 			$this->error('请求错误');

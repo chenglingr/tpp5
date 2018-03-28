@@ -23,4 +23,12 @@ class Student extends BaseModel{
 					
 		return $result;
 	}
+	public function addStudentList($datas)
+	{
+		$students=$this->saveAll($datas);
+		if($students){
+			return true;
+		}
+		return false;
+	}
 }

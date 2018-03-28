@@ -4,7 +4,7 @@
 		
 		<title>学生管理</title>
 		{include file="public/header"}
-			<link rel="stylesheet" href="__STATIC__/assets/css/jquery-ui.custom.min.css" />
+		<link rel="stylesheet" href="__STATIC__/assets/css/jquery-ui.custom.min.css" />
 	</head>
 
 	<body class="no-skin">
@@ -44,19 +44,42 @@
 							<div class="col-xs-12">
 								<!-- PAGE CONTENT BEGINS -->
 									<div class="widget-main">
-														<div class="form-group">
-															<div class="col-xs-12">
-																<input type="file" id="id-input-file-2" />
-															</div>
-														</div>
 
-														<div class="form-group">
-															<div class="col-xs-12">
-																<input multiple="" type="file" id="id-input-file-3" />
-															</div>
-														</div>
+		<form method="post" action="{:url('student/savelist')}" enctype="multipart/form-data">
 
+													<label class="block clearfix">
+														<select class="depart form-control" name="depart" id="form-field-select-1">
+															<option value="0">--请选择所属部门--</option>
+															{volist name="departs" id="vo"}
+																<option value="{$key}">{$vo}</option>
+															{/volist}		
+														</select>
+													</label>
+													<label class="block clearfix">
+														<select class="se_grade_id form-control" name="grade_id" id="form-field-select-1">
 														
+														</select>
+													</label>
+
+
+													<label class="block clearfix">
+														<div class="form-group">
+															<input type="file" name="studentlist" class="form-control"  id="id-input-file-3" />
+														
+														</div>
+													</label>
+
+													<div class="clearfix">
+													
+
+														<button type="submit" class="width-30  btn btn-sm btn-success">
+															<span class="bigger-110">批量添加</span>
+
+															<i class="ace-icon fa fa-arrow-right icon-on-right"></i>
+														</button>
+													</div>													
+		</form>												
+
 													</div>
 												
 
@@ -74,13 +97,28 @@
 		<script type="text/javascript">
 	//enctype="multipart/form-data" https://bbs.csdn.net/topics/391821296
 
-					$('#id-input-file-3').ace_file_input({
+				$('#id-input-file-2').ace_file_input({
+					no_file:'请选择excel文件 ...',
+					btn_choose:'选择',
+					btn_change:'重新选择',
+					droppable:false,
+					onchange:null,
+					thumbnail:false, //| true | large
+					allowExt: ["xls", "xlsx"],  
+                   // allowMime: ["excel/xls", "excel/xlsx"],
+					//whitelist:'xls|xlsx',
+					//blacklist:'exe|php'
+					//onchange:''
+					//
+				});
+				$('#id-input-file-3').ace_file_input({
 					style: 'well',
-					btn_choose: 'Drop files here or click to choose',
+					btn_choose: 'Drop file here or click to choose',
 					btn_change: null,
 					no_icon: 'ace-icon fa fa-cloud-upload',
 					droppable: true,
-					thumbnail: 'small'//large | fit
+					thumbnail: 'small',//large | fit
+					allowExt: ["xls", "xlsx"] 
 					//,icon_remove:null//set null, to hide remove/reset button
 					/**,before_change:function(files, dropped) {
 						//Check an example below
@@ -105,21 +143,14 @@
 					//console.log($(this).data('ace_input_method'));
 				});
 
+	
+		/**定义页面全局变量**/
+		var SCOPE = {
+			"grade_url" : "{:url('api/grade/getGradesByDepartName')}",
 
-				$('#id-input-file-2').ace_file_input({
-					no_file:'No File ...',
-					btn_choose:'Choose',
-					btn_change:'Change',
-					droppable:false,
-					onchange:null,
-					thumbnail:false //| true | large
-					//whitelist:'gif|png|jpg|jpeg'
-					//blacklist:'exe|php'
-					//onchange:''
-					//
-				});
-			
+		};
 				
 </script>
+{load href="__STATIC__/js/common.js" /}
 	</body>
 </html>
