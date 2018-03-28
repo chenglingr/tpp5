@@ -61,6 +61,12 @@ class Student extends Base{
 	}
 	public function addlist(){
 		return $this->fetch();
+/*		$user = new User;
+$list = [
+    ['name'=>'thinkphp','email'=>'thinkphp@qq.com'],
+    ['name'=>'onethink','email'=>'onethink@qq.com']
+];
+$user->saveAll($list);*/
 	}
 	public function save(){
 		if(!request()->post()){
