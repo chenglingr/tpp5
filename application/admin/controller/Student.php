@@ -75,6 +75,8 @@ $user->saveAll($list);*/
 	}
 	//批量导入 excel
 	public function savelist(){
+
+	
 		if(!request()->post()){
 			$this->error('请求错误');
 		}
@@ -83,29 +85,26 @@ $user->saveAll($list);*/
 		{
 			$this->error('请先选择有效班级');
 		}
-  //获取表单上传文件 
+  //获取表单上传文件  
  		$file = request()->file('studentlist');  
   		$info = $file->validate(['ext' => 'xlsx,xls'])->move(ROOT_PATH . 'public' . DS . 'uploads' . DS . 'student');  
 
   		  //数据为空返回错误  
         if(empty($info)){  
-            $output['status'] = false;  
-            $output['info'] = '导入数据失败~';  
-            $this->ajaxReturn($output);  
+        	$this->error('文件导入错误');
         } 
 
         //获取文件名  
         $exclePath = $info->getSaveName();  
         //上传文件的地址  
         $filename = ROOT_PATH . 'public' . DS . 'uploads' . DS . 'student'. DS . $exclePath;  
-          //判断截取文件  
+          //判断截取文件  . strtr($exclePath,'\\','/')
         $extension = strtolower( pathinfo($filename, PATHINFO_EXTENSION) ); 
+        
+	//$delfilename= $_SERVER['DOCUMENT_ROOT'].'tpp5/public/uploads/student/'.strtr($exclePath,'\\','/');
 
-          $delfilename =  '/thinkphp5/public/uploads/student/' . strtr($exclePath,'\\','/'); 
-
-
-vendor("PHPExcel.PHPExcel.PHPExcel");
-vendor("PHPExcel.PHPExcel.IOFactory");
+	vendor("PHPExcel.PHPExcel.PHPExcel");
+	vendor("PHPExcel.PHPExcel.IOFactory");
         //区分上传文件格式  
         if($extension == 'xlsx') {  
             $objReader =\PHPExcel_IOFactory::createReader('Excel2007');  
@@ -135,16 +134,20 @@ vendor("PHPExcel.PHPExcel.IOFactory");
               
         }  
    		$ok=true;
+   	
 		 try{
 			$ok=  Model('Student')->addStudentList($res);
 		 }catch(\Exception $e){
   			$ok=false;
 		 }finally{
- 			if (file_exists($delfilename)) {  
-           	 return unlink($delfilename);  
+
+		 	unset($info);//释放文件资源
+ 			if (file_exists($filename)) {  
+           		unlink($filename);  
           	} 
+          
 		 }
-		
+	
      	if($ok){
 			$this->success("批量添加成功",url('student/index',['id'=>$data['grade_id']]));
       	}
