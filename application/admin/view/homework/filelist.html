@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<title>elFinder</title>
+		<link rel="stylesheet" type="text/css" href="__STATIC__/assets/css/jquery-ui.min.css">
+		<link rel="stylesheet" type="text/css" href="__STATIC__/elfinder/css/elfinder.min.css">
+	</head>
+	<body>
+
+		<!-- Element where elFinder will be created (REQUIRED) -->
+		<div id="elfinder"></div>
+124
+        <script type="text/javascript" src="__STATIC__/assets/js/jquery-2.1.4.min.js"></script>
+		<script type="text/javascript" src="__STATIC__/assets/js/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="__STATIC__/elfinder/js/elfinder.min.js"></script>
+		<script type="text/javascript" src="__STATIC__/elfinder/js/i18n/elfinder.zh_CN.js"></script>
+		<script type="text/javascript" charset="utf-8">
+            $().ready(function() {
+                var elf = $('#elfinder').elfinder({
+                    url : "homework/getMyfile",  // 这里设置为File模块的index方法，用U方法构建
+                    lang: 'zh_CN',             // language (OPTIONAL)
+                }).elfinder('instance');
+            });
+        </script>
+	</body>
+</html>

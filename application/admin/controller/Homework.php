@@ -12,5 +12,12 @@ class HomeWork extends BaseTeacher{
 	public function save(){
 		
 	}
+	public function filelist(){
+		return $this->fetch();
+	}
 
+	
+	public function  getMyfile(){
+		 //要调用extend/elfinder/connector.php
+	}
 }
