@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		
+		<title>教师列表</title>
+		{include file="public/header"}
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="__STATIC__/assets/css/bootstrap-table.min.css">
+	</head>
+
+	<body class="no-skin">
+
+		{include file="public/nav"}
+		<div class="main-container ace-save-state" id="main-container">
+
+		{switch name="menu"}
+		    {case value="menu"}{include file="public/menu"}{/case}
+		    {case value="menus"}{include file="public/menus"}{/case}
+		    {case value="menut"}{include file="public/menut"}{/case}
+		    {default /}请先登录
+		{/switch}
+			<div class="main-content">
+				<div class="main-content-inner">
+					<div class="breadcrumbs ace-save-state" id="breadcrumbs">
+						<ul class="breadcrumb">
+							<li>
+								<i class="ace-icon fa fa-home home-icon"></i>
+								<a href="#">首页</a>
+							</li>
+
+							<li>
+								<a href="#">教师</a>
+							</li>
+							<li class="active">列表1</li>
+						</ul><!-- /.breadcrumb -->
+
+						<div class="nav-search" id="nav-search">
+							<form class="form-search">
+								<span class="input-icon">
+									<input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
+									<i class="ace-icon fa fa-search nav-search-icon"></i>
+								</span>
+							</form>
+						</div><!-- /.nav-search -->
+					</div>
+
+					<div class="page-content">
+						{include file="public/settings"}
+						<div class="row">
+							<div class="col-xs-12">
+								<!-- PAGE CONTENT BEGINS -->
+ 									<table id="teachertable"></table>
+
+
+								<!-- PAGE CONTENT ENDS -->
+							</div><!-- /.col -->
+						</div><!-- /.row -->
+					</div><!-- /.page-content -->
+				</div>
+			</div><!-- /.main-content -->
+
+
+			{include file="public/footer"}
+		</div><!-- /.main-container -->
+		{include file="public/script"}
+		
+<!-- Latest compiled and minified JavaScript -->
+<script src="__STATIC__/assets/js/bootstrap-table.min.js"></script>
+
+<!-- Latest compiled and minified Locales -->
+<script src="__STATIC__/assets/js/bootstrap-table-zh-CN.min.js"></script>
+		<!-- inline scripts related to this page -->
+		<script type="text/javascript">
+			
+			$('#teachertable').bootstrapTable({
+			    url:"doGetTeacherData",//请求数据url
+			    queryParams: function (params) {
+			        return {
+			            offset: params.offset,  //页码
+			            limit: params.limit,   //页面大小
+			            search : params.search, //搜索
+			            order : params.order, //排序
+			            ordername : params.sort, //排序
+			        };
+			    },
+			    showHeader : true,
+			    showColumns : true,
+			    showRefresh : true,
+			    pagination: true,//分页
+			    sidePagination : 'server',//服务器端分页
+			    pageNumber : 1,
+			    pageList: [5, 10, 20, 50],//分页步进值
+			    search: true,//显示搜索框
+			    //表格的列
+			    columns: [
+			        {
+			            field: 'num',//域值
+			            title: '工号',//标题
+			            visible: true,//false表示不显示
+			            sortable: true,//启用排序
+			            width : '5%',
+			        },
+			        {
+			            field: 'username',//域值
+			            title: '姓名',//标题
+			            visible: true,//false表示不显示
+			            sortable: true,//启用排序
+			            width : '30%',
+			            editable:true,
+			        },
+			        {
+			            field: 'depart',//域值
+			            title: '部门',//内容
+			            visible: true,//false表示不显示
+			            sortable: true,//启用排序
+			            width : '35%',
+			            editable:true,
+			        },
+			        {
+			            field: 'status',//域值
+			            title: '状态',//内容
+			            visible: true,//false表示不显示
+			            sortable: true,//启用排序
+			            width : '20%',
+			            formatter : function (value, row, index) {
+			                if (row['status'] === 1) {
+			                    return '正常';
+			                }
+			                if (row['status'] === 0) {
+			                    return '禁用';
+			                }
+			                return value;
+			            }
+			        }
+			    ]
+			});
+		</script>
+		
+	</body>
+</html>

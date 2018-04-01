@@ -5,7 +5,7 @@ use think\Controller;
 use PHPExcel; */
 
 class Student extends Base{
-	public function index($id=0){
+	public function index(){
 
 		$departs=config('depart.depart_name');
 		$grades=model('Grade')->getAllGradeByStatus(1);
@@ -13,8 +13,8 @@ class Student extends Base{
 		$this->assign('departs',$departs);
 
 		//$this->assign('grades', $grades);
-
-
+      
+		$id=input('param.grade_id');
 		if(intval($id)){
 			
     		$students=model('Student')->getStudentByGradeID($id,1);

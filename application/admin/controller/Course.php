@@ -3,16 +3,19 @@ namespace app\admin\controller;
 use think\Controller;
 
 class Course extends Base{
-	public function index($gradeid=0,$teacherid=0){
+	public function index(){
 
 		$departs=config('depart.depart_name');
 		$teachers=model('Teacher')->getAllTeacher();
 		$this->assign('departs',$departs);
 		$this->assign('teachers',$teachers);
-
-		if($gradeid!=0&&$teacherid!=0)
+		$gradeid=input('param.grade_id');
+		$teacherid=input('param.teacher_id');
+		$depart=input('param.depart');
+		if($depart)
+	//	if($gradeid!=0&&$teacherid!=0)
 		{
-			$courses=model('Course')->getCourseByGradeIDTeacherID($gradeid,$teacherid,"");
+			$courses=model('Course')->getCourseByGradeIDTeacherID($gradeid,$teacherid,$depart);
 
 			return $this->fetch('',[
 				'courses'=>$courses,
@@ -20,12 +23,13 @@ class Course extends Base{
 			]);
 		}
 
-		if(request()->isPost()){
+/*		if(request()->isPost()){
            //入库逻辑
             $data=input('post.');
 			$grade_id=$data['grade_id'];
 			$teacher_id=$data['teacher_id'];
 			$depart=$data['depart'];
+
 		 	$courses=model('Course')->getCourseByGradeIDTeacherID($grade_id,$teacher_id,$depart);
 
 			return $this->fetch('',[
@@ -33,7 +37,7 @@ class Course extends Base{
 				
 			]);
 		}
-			
+		*/	
 		return $this->fetch('',['courses'=>[]]);
 	
 

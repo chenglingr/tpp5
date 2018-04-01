@@ -20,7 +20,12 @@
 		{include file="public/nav"}
 		<div class="main-container ace-save-state" id="main-container">
 
-		{include file="public/menu"}
+		{switch name="menu"}
+		    {case value="menu"}{include file="public/menu"}{/case}
+		    {case value="menus"}{include file="public/menus"}{/case}
+		    {case value="menut"}{include file="public/menut"}{/case}
+		    {default /}请先登录
+		{/switch}
 			<div class="main-content">
 				<div class="main-content-inner">
 					<div class="breadcrumbs ace-save-state" id="breadcrumbs">

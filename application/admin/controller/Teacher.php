@@ -4,13 +4,32 @@ use think\Controller;
 
 class Teacher extends Base{
 
-public function main(){
-	return 'teacher';
-}
+
 	public function index(){
 		$teachers=model('Teacher')-> getTeacherByStatus(1);
 
 		return $this->fetch('',['teachers'=>$teachers]);
+	}
+	public function index1(){
+		return $this->fetch();
+	}
+
+	//服务器端分页 https://www.cnblogs.com/landeanfen/p/4976838.html
+	public function doGetTeacherData() {
+	 
+	    $limit = input("limit");
+	    $offset = input("offset");
+	    $search = input("search");
+	    $order = input("order", "desc");
+	    $ordername = input("ordername");
+	    if (!$ordername) {
+	        $ordername = 'id';
+	        $order = 'desc';
+	    }
+	   
+	    $rs =Model('Teacher')->doRoleRuleList($offset, $limit, $search, $order, $ordername);
+
+	    return json($rs);
 	}
 	public function add(){
 

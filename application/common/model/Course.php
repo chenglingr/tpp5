@@ -51,17 +51,18 @@ class Course extends BaseModel{
 		return $result;
 	}
 
-	public function getCourseByGradeIDTeacherID($gradeid,$teacherid,$departname)
+	public function getCourseByGradeIDTeacherID($gradeid=0,$teacherid=0,$departname='')
 	{
 		//teacher id 0 为全部  gradeid=-1无班级  0为全部班级--部门名
 		$datas[]="status=1";
+		if($gradeid==-1){return [];}
 		if($teacherid>0){
 			$datas[]="teacher_id=".$teacherid;
 		}
 		if($gradeid>0){
 			$datas[]="grade_id=".$gradeid;
 		}
-		elseif ($gradeid==0) {
+		elseif ($gradeid==0&&$departname!='') {
 			//查出本部门所有的班级
 		$gradeids=	model('Grade')->getGradesIDByDepartName($departname);
 		if($gradeids)

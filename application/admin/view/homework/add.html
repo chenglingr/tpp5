@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		
+		<title>Blank Page - Ace Admin</title>
+		{include file="public/header"}
+		
+	</head>
+
+	<body class="no-skin">
+
+		{include file="public/nav"}
+		<div class="main-container ace-save-state" id="main-container">
+
+		{switch name="menu"}
+		    {case value="menu"}{include file="public/menu"}{/case}
+		    {case value="menus"}{include file="public/menus"}{/case}
+		    {case value="menut"}{include file="public/menut"}{/case}
+		    {default /}请先登录
+		{/switch}
+			<div class="main-content">
+				<div class="main-content-inner">
+					<div class="breadcrumbs ace-save-state" id="breadcrumbs">
+						<ul class="breadcrumb">
+							<li>
+								<i class="ace-icon fa fa-home home-icon"></i>
+								<a href="#">首页</a>
+							</li>
+
+							<li>
+								<a href="#">作业</a>
+							</li>
+							<li class="active">增加</li>
+						</ul><!-- /.breadcrumb -->
+
+						<div class="nav-search" id="nav-search">
+							<form class="form-search">
+								<span class="input-icon">
+									<input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
+									<i class="ace-icon fa fa-search nav-search-icon"></i>
+								</span>
+							</form>
+						</div><!-- /.nav-search -->
+					</div>
+
+					<div class="page-content">
+						{include file="public/settings"}
+						<div class="row">
+							<div class="col-xs-12">
+								<!-- PAGE CONTENT BEGINS -->
+										<div class="widget-main">
+											<h4 class="header green lighter bigger">
+												<i class="ace-icon fa fa-users blue"></i>
+												新增作业
+											</h4>
+
+											<div class="space-6"></div>
+											<p> 输入管理员基本信息: </p>
+
+											<form action="{:url('admin/save')}" method="post">
+												<fieldset>
+													<label class="block clearfix">
+														<span class="block input-icon input-icon-right">
+															<input type="text" name="num" class="form-control" placeholder="工号" />
+															<i class="ace-icon fa fa-life-ring"></i>
+														</span>
+													</label>
+													<label class="block clearfix">
+														<span class="block input-icon input-icon-right">
+															<input type="text" name="username" class="form-control" placeholder="姓名" />
+															<i class="ace-icon fa fa-user"></i>
+														</span>
+													</label>				
+
+													<label class="block clearfix">
+														<span class="block input-icon input-icon-right">
+															<input type="password" name="password" class="form-control" placeholder="密码" />
+															<i class="ace-icon fa fa-lock"></i>
+														</span>
+													</label>
+
+													<label class="block clearfix">
+														<span class="block input-icon input-icon-right">
+															<input type="password" class="form-control" placeholder="再输一边密码" />
+															<i class="ace-icon fa fa-retweet"></i>
+														</span>
+													</label>
+													<label class="block clearfix">
+														<span class="block input-icon input-icon-right">
+															<input type="text" name="tel" class="form-control" placeholder="电话" />
+															<i class="ace-icon fa fa-tachometer"></i>
+														</span>
+													</label>
+													<label class="block clearfix">
+														<span class="block input-icon input-icon-right">
+															<input type="email" name="email" class="form-control" placeholder="邮箱" />
+															<i class="ace-icon fa fa-envelope"></i>
+														</span>
+													</label>
+													<div class="space-24"></div>
+
+												
+
+													<div class="clearfix">
+														<button type="reset" class="width-30 pull-left btn btn-sm">
+															<i class="ace-icon fa fa-refresh"></i>
+															<span class="bigger-110">重置</span>
+														</button>
+
+														<button type="submit" class="width-65 pull-right btn btn-sm btn-success">
+															<span class="bigger-110">添加</span>
+
+															<i class="ace-icon fa fa-arrow-right icon-on-right"></i>
+														</button>
+													</div>
+												</fieldset>
+											</form>
+										</div>
+
+								<!-- PAGE CONTENT ENDS -->
+							</div><!-- /.col -->
+						</div><!-- /.row -->
+					</div><!-- /.page-content -->
+				</div>
+			</div><!-- /.main-content -->
+
+
+			{include file="public/footer"}
+		</div><!-- /.main-container -->
+		{include file="public/script"}
+		
+
+		<!-- inline scripts related to this page -->
+	</body>
+</html>

@@ -13,8 +13,14 @@ class Base extends Controller
 
 			$this->error('请先登录','login/index');
 		}
-
+		$accounttype=$this->getUserType();
+		if($accounttype=='管理员'){$this->assign('menu','menu');}
+		else{
+			session(null,'admin');
+			$this->error('请先用管理员账号登录','login/index');
+		}
 		$this->assign('user',$this->getLoginUser());
+		
 	//	return $isLogin;
 	}
 	public function isLogin()

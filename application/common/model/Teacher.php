@@ -4,7 +4,7 @@ use think\Model;
 
 class Teacher extends BaseModel{
 
-		public function getTeacherByStatus($status=1){
+	public function getTeacherByStatus($status=1){
 		$data=[
 			'status'=>$status,			
 		];
@@ -35,5 +35,21 @@ class Teacher extends BaseModel{
 					->select();
 					
 		return $result;
+	}
+	//服务器端分页 https://www.cnblogs.com/landeanfen/p/4976838.html
+	public function doRoleRuleList($offset, $limit, $search, $order, $ordername) {
+	 
+	    $total =$this->where(['status'=>['=', 1]])->count();
+	 
+	    $rows =$this->where([
+	            'status'=>['=',1],
+	             'username|depart' => ['like', "%{$search}%"],	   
+	        ])
+	        ->order($ordername." ".$order)
+	        ->limit($offset,$limit)
+	        ->select();
+
+
+	    return ['total'=>$total,'rows'=>$rows];
 	}
 }
