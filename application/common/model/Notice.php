@@ -20,5 +20,19 @@ class Notice extends BaseModel{
 					
 		return $result;
 	}
-	
+	public function getNoticeByNum($num=16){
+		$data=[
+			'status'=>1,			
+		];
+
+		$order=[
+			'id'=>'desc',
+		];
+		$result= $this->where($data)
+					->order($order)
+					->limit($num)
+					->paginate();
+					
+		return $result;
+	}
 }

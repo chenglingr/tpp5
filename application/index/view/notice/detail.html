@@ -1,14 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>Document</title>
+     <title>公告</title>
+	{include file="public/header"}
+    
+    <style type="text/css">
+        .myhr{margin-top:3px;margin-bottom: 3px; }
+    </style>
 </head>
 <body>
-	{$name}
-	<br>
-	<div id="content">{$content|html_entity_decode}</div>
+
+	{include file="public/nav"}
 	
+	    <div class="container-blog">
+        <div class="container">
+            <div class="page-header" id="blog">
+                <div class="row">
+                     <div class="col-md-4">
+                {include file="public/menu"}
+                    </div>
+                    <div class="col-md-8">   
+                    <div>  
+                          <ol class="breadcrumb">
+                              <li><a href="{:url('index/index/index')}"><strong>首页</strong></a></li>
+                              <li><a href="{:url('index/notice/index')}"><strong>公告</strong></a></li>
+                              <li class="active"><strong>公告内容</strong></li>
+                            </ol>
+                    <div class="row">
+                                <div class="col-xs-12">                  
+                        <h3 class="text-primary text-center">{$name|html_entity_decode}</h3>  
+                          <div class="text-center">  {$create_time}</div>
+                         <hr />                           
+                        <div id="content">{$content|html_entity_decode}</div>
+                             </div>
+                      </div> 
+                        </div>
+                      </div> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+	{include file="public/footer"}
+
+
 
 </body>
 </html>

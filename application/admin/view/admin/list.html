@@ -86,11 +86,11 @@
 																<i class="ace-icon fa fa-pencil bigger-120"></i>
 															</button>
 
-															<button class="btn btn-xs btn-danger">
+															<a href="{:url('admin/status',['id'=>$vo.id,'status'=>0])}" class="btn btn-xs btn-danger" title="删除">
 																<i class="ace-icon fa fa-trash-o bigger-120"></i>
-															</button>
+															</a>
 
-															<a href="{:url('admin/status',['id'=>$vo.id,'status'=>1])}"  class="btn btn-xs btn-warning">
+															<a href="{:url('admin/status',['id'=>$vo.id,'status'=>1])}"  class="btn btn-xs btn-warning" title="恢复正常">
 																<i class="ace-icon fa fa-flag bigger-120"></i>
 															</a>
 														</div>
@@ -103,7 +103,7 @@
 
 																<ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
 																	<li>
-																		<a href="#" class="tooltip-info" data-rel="tooltip" title="View">
+																		<a href="#" class="tooltip-info" data-rel="tooltip" title="查看">
 																			<span class="blue">
 																				<i class="ace-icon fa fa-search-plus bigger-120"></i>
 																			</span>
@@ -111,7 +111,7 @@
 																	</li>
 
 																	<li>
-																		<a href="#" class="tooltip-success" data-rel="tooltip" title="Edit">
+																		<a href="{:url('admin/status',['id'=>$vo.id,'status'=>1])}" class="tooltip-success" data-rel="tooltip" title="恢复正常">
 																			<span class="green">
 																				<i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
 																			</span>
@@ -119,7 +119,7 @@
 																	</li>
 
 																	<li>
-																		<a href="#" class="tooltip-error" data-rel="tooltip" title="Delete">
+																		<a href="{:url('admin/status',['id'=>$vo.id,'status'=>2])}" class="tooltip-error" data-rel="tooltip" title="删除">
 																			<span class="red">
 																				<i class="ace-icon fa fa-trash-o bigger-120"></i>
 																			</span>

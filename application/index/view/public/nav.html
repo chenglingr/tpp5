@@ -1,0 +1,41 @@
+ <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="#" title="Sales and Marketing Bootstrap Theme">
+                    <img class="logo" src="__STATIC__/images/logo.png" alt="作业系统" style="margin-top: 5px;" />
+                </a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse mynav" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="{:url('index/index')}">首页</a></li>
+                    <li ><a href="{:url('course/index')}">热门课程</a></li>
+                    <li><a href="{:url('grade/index')}">热门班级</a></li> 
+                   
+                    <li><a href="{:url('notice/index')}">公告</a></li>
+                     {if condition="$user"}
+                      <li><a href="{:url('admin/login/index')}">欢迎您，{$user->username}</a></li>
+                     
+                     <li><a href="{:url('admin/login/logout')}">
+                                        <i class="ace-icon fa fa-power-off"></i>
+                                        退出<span class="glyphicon glyphicon-circle-arrow-right"></span>
+                                    </a>
+                                </li>
+                     {else/}
+                     <li><a href="{:url('admin/login/index')}">登录</a></li>   
+                     {/if}
+                    
+                   
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>

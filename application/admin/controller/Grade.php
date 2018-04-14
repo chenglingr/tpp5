@@ -39,6 +39,7 @@ class Grade extends Base{
 		$gradeData=[		
 			'name'=>$data['name'],			
 			'depart'=>$data['depart'],
+			'remark'=>$data['remark'],
 		];
 		$gradeID=model('Grade')->add($gradeData);
 		if(!$gradeID){

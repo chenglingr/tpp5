@@ -1,0 +1,21 @@
+{
+	"folders":
+	[
+		{
+			"path": "E:/xampp/htdocs/tpp5"
+		}
+	],  
+    "settings":  
+    {  
+        "xdebug":  
+        {  
+            "close_on_stop": true,  
+            "path_mapping":  
+            {  
+            },  
+            "port": 9000,  
+            "super_globals": true,  
+            "url": ""  
+        }  
+    }  
+}

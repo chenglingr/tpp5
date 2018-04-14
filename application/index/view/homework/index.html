@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <title>课程作业任务</title>
+	{include file="public/header"}    
+    <style type="text/css">       
+        .my:hover{
+            background:#DCDCDC;
+            transition: 1s;
+        }
+        .my{background: #F8F8FF;border: 2px white solid}
+    </style>
+</head>
+<body>
+
+	{include file="public/nav"}
+	
+    <div class="container-about">
+        <div class="container">
+            <div class="page-header" id="about">
+                <div class="row">
+                    <div class="col-md-4">
+                       {include file="public/hotcourses"}
+                    </div>
+                    <div class="col-md-8">
+                        <h2 class="text-primary">{$course->name}</h2>
+                        <h3 class="text-primary">{$course->grade_id|getGradeName}---{$course->teacher_id|getTeacherName}老师</h3>
+                        <p class="text-justify">{$course->remark}</p>
+                        <P>开课时间：{$course->start_time|date="y-m-d h:i",###}---{$course->end_time|date="y-m-d h:i",###}</P><hr>
+                        
+                        <div style="padding-top:10px; padding-bottom:20px;">
+                            <h2 class="text-primary">课程作业</h2>
+                        </div>
+                        <div class="row" style="padding-top: 2px;">
+                        {volist name="homeworks" id="vo"}
+                            <div class="col-md-4 col-sm-6 col-xs-12 my">
+                                <h4 class="text-primary">{$vo.name}</h4>
+                                <p class="text-justify">{$vo.remark|substr=0,100}</p>
+                                <p>开始时间:{$course->start_time|date="y-m-d h:i",###}</p>
+                                <p>结束时间:{$course->end_time|date="y-m-d h:i",###}</p>
+                                <p>{$course->end_time|isEnd}</p>
+                                <p align="right">
+                                 <a class="btn btn-default" href="{:url('student/index',['hid'=>$vo.id,'cid'=>$course->id])}" style="background-color: #2098D1; color: #fff;">查看学生作品</a>
+
+                                </p>
+                            </div>
+                        {/volist}  
+                        </div>
+                    {:pagination($homeworks)}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+	{include file="public/footer"}
+
+
+
+</body>
+</html>

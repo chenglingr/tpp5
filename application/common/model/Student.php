@@ -31,4 +31,20 @@ class Student extends BaseModel{
 		}
 		return false;
 	}
+
+	public function getStudentByHomeworkID($homeworkid){
+		$homework=model('Homework')->get($homeworkid);
+		$course=model('Course')->get($homework['course_id']);
+		$grade_id=$course['grade_id'];
+		$result=$this->where(['grade_id'=>$grade_id,'status'=>1])->select();
+
+		return $result;
+	}
+	public function getStudentByCourseID($courseid){
+		$course=model('Course')->get($courseid);
+		$grade_id=$course['grade_id'];
+		$result=$this->where(['grade_id'=>$grade_id,'status'=>1])->select();
+
+		return $result;
+	}
 }

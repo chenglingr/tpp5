@@ -1,0 +1,22 @@
+
+                      {/*
+<img class="img-responsive" src="images/image10.jpg" style="padding-top:10px;" /> <br />
+                        */}  
+                       
+                        <h2 class="text-primary">热门课程</h2>
+                        <br />
+                        {volist name="courses" id="vo"}
+                        <p> <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                          &nbsp; &nbsp;<a class="text-primary" href="{:url('homework/index',['id'=>$vo.id])}">{$vo.name}</a><br>
+&nbsp; &nbsp;<span ><a class="label label-primary" href="{:url('course/index',['id'=>$vo.grade_id])}" >{$vo.grade_id|getGradeName}</a></span>
+                          </p> 
+                          <hr class="myhr">
+                        {/volist}
+                       
+                        <br />
+                        <h2 class="text-primary">热门班级</h2>
+                        <br />
+                         {volist name="grades" id="vo"}
+                        <p class="text-primary"><i class="fa fa-arrow-right" aria-hidden="true"></i>&nbsp; &nbsp;   <a  href="{:url('course/index',['id'=>$vo.id])}">{$vo.name}</a></p>  
+                        <hr class="myhr">
+                       {/volist}

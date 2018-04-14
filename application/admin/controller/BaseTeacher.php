@@ -34,11 +34,18 @@ class BaseTeacher extends Controller
 		}
 		return false;
 	}
+	public function getUserID(){
+		$user=$this->getLoginUser();
+		if($user&&$user->id){
+			return $user->id;
+		}
+		return 0;
+   }
    public function getUserType(){
 
  		 $usertype= session('AccountType','','admin');
  		 if(!isset($usertype)){return '匿名';}
- 		 if($usertype==0){return '管理员';}
+ 		 if($usertype==3){return '管理员';}
  		 if($usertype==1){return '教师';}
  		 if($usertype==2){return '学生';}
    }

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <title>公告</title>
+	{include file="public/header"}
+    <style type="text/css">
+        .myhr{margin-top:3px;margin-bottom: 3px; }
+    </style>
+  
+</head>
+<body>
+
+	{include file="public/nav"}
+	
+	    <div class="container-blog">
+        <div class="container">
+            <div class="page-header" id="blog">
+                <div class="row">
+                   <div class="col-md-4">
+                {include file="public/menu"}
+                    </div>
+                    <div class="col-md-8">
+                        <div>
+                            <ol class="breadcrumb">
+                              <li><a href="{:url('index/index/index')}"><strong>首页</strong></a></li>
+                              <li><a href="{:url('index/notice/index')}"><strong>公告</strong></a></li>
+                              <li class="active"><strong>最新公告</strong></li>
+                            </ol>
+                              {volist name="notices" id="vo"}
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    
+                                    <h3 class="text-primary"><a href="{:url('index/notice/detail',['id'=>$vo.id])}">{$vo.name|html_entity_decode}</a></h3>
+                                  
+                                 
+                                    <div class="text-right">
+                                         
+                                       <span class="glyphicon glyphicon-plus"></span>{$vo.create_time}&nbsp; &nbsp; &nbsp;                                                                          
+                                        <a href="{:url('index/notice/detail',['id'=>$vo.id])}">查看内容</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr />               
+
+                         {/volist}
+                         
+                        </div>
+                       {:pagination($notices)}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+	{include file="public/footer"}
+
+
+
+</body>
+</html>

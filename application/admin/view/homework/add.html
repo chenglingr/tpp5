@@ -2,9 +2,15 @@
 <html lang="en">
 	<head>
 		
-		<title>Blank Page - Ace Admin</title>
+		<title>发布</title>
 		{include file="public/header"}
-		
+		<link rel="stylesheet" href="__STATIC__/assets/css/jquery-ui.custom.min.css" />
+		<link rel="stylesheet" href="__STATIC__/assets/css/chosen.min.css" />
+		<link rel="stylesheet" href="__STATIC__/assets/css/bootstrap-datepicker3.min.css" />
+		<link rel="stylesheet" href="__STATIC__/assets/css/bootstrap-timepicker.min.css" />
+		<link rel="stylesheet" href="__STATIC__/assets/css/daterangepicker.min.css" />
+		<link rel="stylesheet" href="__STATIC__/assets/css/bootstrap-datetimepicker.min.css" />
+		<link rel="stylesheet" href="__STATIC__/assets/css/bootstrap-colorpicker.min.css" />
 	</head>
 
 	<body class="no-skin">
@@ -24,11 +30,11 @@
 						<ul class="breadcrumb">
 							<li>
 								<i class="ace-icon fa fa-home home-icon"></i>
-								<a href="#">首页</a>
+								<a href="{:url('admin/homework/index')}">首页</a>
 							</li>
 
 							<li>
-								<a href="#">作业</a>
+								<a href="{:url('admin/homework/index')}">作业</a>
 							</li>
 							<li class="active">增加</li>
 						</ul><!-- /.breadcrumb -->
@@ -55,48 +61,48 @@
 											</h4>
 
 											<div class="space-6"></div>
-											<p> 输入管理员基本信息: </p>
+											<p> 输入作业基本信息: </p>
 
-											<form action="{:url('admin/save')}" method="post">
+											<form action="{:url('homework/save')}" method="post">
 												<fieldset>
+
+													<label class="block clearfix">
+														<select class="depart form-control" name="course_id" id="form-field-select-1">
+															{volist name="courses" id="vo"}
+																<option value="{$vo.id}">{$vo.name}</option>
+															{/volist}		
+														</select>
+													</label>
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="text" name="num" class="form-control" placeholder="工号" />
+															<input type="text" name="name" class="form-control" placeholder="作业标题" />
 															<i class="ace-icon fa fa-life-ring"></i>
 														</span>
 													</label>
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="text" name="username" class="form-control" placeholder="姓名" />
-															<i class="ace-icon fa fa-user"></i>
+															<div class="row">
+															<div class="col-xs-12 col-sm-12">
+																<div class="input-daterange input-group">
+																	<input type="text" class="input-sm form-control" name="start_time" placeholder="起始日期" />
+																	<span class="input-group-addon">
+																		<i class="fa fa-exchange"></i>
+																	</span>
+
+																	<input type="text" class="input-sm form-control" placeholder="结束日期" name="end_time" />
+																</div>
+															</div>
+														</div>
+													
 														</span>
 													</label>				
 
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="password" name="password" class="form-control" placeholder="密码" />
-															<i class="ace-icon fa fa-lock"></i>
+															<textarea class="form-control" name="remark" id="form-field-8" rows="8" placeholder="作业详细要求"></textarea>
 														</span>
 													</label>
 
-													<label class="block clearfix">
-														<span class="block input-icon input-icon-right">
-															<input type="password" class="form-control" placeholder="再输一边密码" />
-															<i class="ace-icon fa fa-retweet"></i>
-														</span>
-													</label>
-													<label class="block clearfix">
-														<span class="block input-icon input-icon-right">
-															<input type="text" name="tel" class="form-control" placeholder="电话" />
-															<i class="ace-icon fa fa-tachometer"></i>
-														</span>
-													</label>
-													<label class="block clearfix">
-														<span class="block input-icon input-icon-right">
-															<input type="email" name="email" class="form-control" placeholder="邮箱" />
-															<i class="ace-icon fa fa-envelope"></i>
-														</span>
-													</label>
 													<div class="space-24"></div>
 
 												
@@ -128,7 +134,14 @@
 			{include file="public/footer"}
 		</div><!-- /.main-container -->
 		{include file="public/script"}
-		
+			<script src="__STATIC__/assets/js/bootstrap-datepicker.min.js"></script>
+		<script src="__STATIC__/assets/js/bootstrap-timepicker.min.js"></script>
+		<script src="__STATIC__/assets/js/moment.min.js"></script>
+		<script src="__STATIC__/assets/js/daterangepicker.min.js"></script>
+		<script src="__STATIC__/assets/js/bootstrap-datetimepicker.min.js"></script>
+		<script type="text/javascript">
+			$('.input-daterange').datepicker({autoclose:true});
+		</script>
 
 		<!-- inline scripts related to this page -->
 	</body>

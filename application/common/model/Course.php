@@ -51,6 +51,41 @@ class Course extends BaseModel{
 		return $result;
 	}
 
+	public function getCourseByTeacherIDStatusNoEnd($teacherid){
+		$data=[
+			'teacher_id'=>$teacherid,
+			'status'=>1,
+			'end_time'=>['gt',time()],	
+		];
+		
+			
+		$order=[
+			'id'=>'desc',
+		];
+		$result= $this->where($data)
+					->order($order)
+					->select();
+					
+		return $result;
+	}
+	public function getCourseByTeacherIDStatusEnd($teacherid){
+		$data=[
+			'teacher_id'=>$teacherid,
+			'status'=>1,
+			'end_time'=>['lt',time()],	
+		];
+		
+			
+		$order=[
+			'id'=>'desc',
+		];
+		$result= $this->where($data)
+					->order($order)
+					->limit(10)
+					->select();
+					
+		return $result;
+	}
 	public function getCourseByGradeIDTeacherID($gradeid=0,$teacherid=0,$departname='')
 	{
 		//teacher id 0 为全部  gradeid=-1无班级  0为全部班级--部门名
@@ -79,4 +114,109 @@ class Course extends BaseModel{
 					
 		return $result;
 	} 
+
+	public function getGradeNamebyCourseID($id){
+		$data=[
+			'id'=>$id,		
+		];		
+	
+		$result= $this->where($data)				
+					->select();		
+			
+		$grade=model('Grade')->get($result[0]['grade_id']);
+	
+		return $grade['name'];
+	}
+
+	public function getCourseByStudentIDStatusNoEnd($studentid){
+
+		$student=model('Student')->get($studentid);
+		$gradeid=$student['grade_id'];
+		$data=[
+			'grade_id'=>$gradeid,
+			'status'=>1,
+			'end_time'=>['gt',time()],
+		];
+	
+			
+		$order=[
+			'id'=>'desc',
+		];
+		$result= $this->where($data)
+					->order($order)
+					->select();
+					
+		return $result;
+
+	}
+		public function getCourseByStudentIDStatusEnd($studentid){
+
+		$student=model('Student')->get($studentid);
+		$gradeid=$student['grade_id'];
+		$data=[
+			'grade_id'=>$gradeid,
+			'status'=>1,
+			'end_time'=>['lt',time()],
+		];
+	
+			
+		$order=[
+			'id'=>'desc',
+		];
+		$result= $this->where($data)
+					->order($order)
+					->limit(10)
+					->select();
+					
+		return $result;
+
+	}
+	public function getCourseByGradeID3($gradeid){
+		$data=[
+			'status'=>1,
+			'end_time'=>['gt',time()],	
+			'grade_id'=>$gradeid,
+		];		
+			
+		$order=[
+			'id'=>'desc',
+		];
+		$result= $this->where($data)
+					->order($order)				
+					->paginate(6);					
+		return $result;
+	}
+
+	public function getAllCourseNoEnd(){
+		$data=[
+			'status'=>1,
+			'end_time'=>['gt',time()],	
+		];		
+			
+		$order=[
+			'id'=>'desc',
+		];
+		$result= $this->where($data)
+					->order($order)				
+					->paginate(3);					
+		return $result;
+	}
+	public function getCourseLimitNum($num=4){
+		$data=[
+			
+			'status'=>1,
+			'end_time'=>['gt',time()],
+		];
+	
+			
+		$order=[
+			'id'=>'desc',
+		];
+		$result= $this->where($data)
+					->order($order)
+					->limit($num)
+					->select();
+					
+		return $result;
+	}
 }

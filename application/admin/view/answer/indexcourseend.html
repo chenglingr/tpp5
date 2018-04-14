@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		
+		<title>我要做的作业</title>
+		{include file="public/header"}
+		
+	</head>
+
+	<body class="no-skin">
+
+		{include file="public/nav"}
+		<div class="main-container ace-save-state" id="main-container">
+
+		{switch name="menu"}
+		    {case value="menu"}{include file="public/menu"}{/case}
+		    {case value="menus"}{include file="public/menus"}{/case}
+		    {case value="menut"}{include file="public/menut"}{/case}
+		    {default /}请先登录
+		{/switch}
+			<div class="main-content">
+				<div class="main-content-inner">
+					<div class="breadcrumbs ace-save-state" id="breadcrumbs">
+						<ul class="breadcrumb">
+							<li>
+								<i class="ace-icon fa fa-home home-icon"></i>
+								<a href="{:url('admin/answer/index')}">首页</a>
+							</li>
+
+							<li>
+								<a href="{:url('admin/answer/indexcourseend')}">作业</a>
+							</li>
+							<li class="active">根据课程查看(历史课程)</li>
+						</ul><!-- /.breadcrumb -->
+
+						<div class="nav-search" id="nav-search">
+							<form class="form-search">
+								<span class="input-icon">
+									<input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
+									<i class="ace-icon fa fa-search nav-search-icon"></i>
+								</span>
+							</form>
+						</div><!-- /.nav-search -->
+					</div>
+
+					<div class="page-content">
+						{include file="public/settings"}
+						<div class="row">
+							<div class="col-xs-12">
+								<!-- PAGE CONTENT BEGINS -->
+ 								<form class="form-inline" action="{:url('answer/indexcourseend')}" method="post">
+									<select class="form-control"  name="course_id" id="form-field-select-2">
+														
+											{volist name="courses" id="vo"}
+													<option value="{$vo.id}">{$vo.name}--{$vo.id|getGradeNamebyCourseID}</option>
+											{/volist}	
+									</select>
+													
+									<button type="submit" class="btn btn-info btn-sm">
+											<i class="ace-icon fa fa-search bigger-110"></i>查询作业
+									</button>
+								</form>
+								<br>
+
+
+										<table id="simple-table" class="table  table-bordered table-hover">
+											<thead>
+												<tr>
+													<th>编号</th>
+													<th>作业名</th>
+													<th class="hidden-480">课程</th>
+													<th class="hidden-480">开始时间</th>
+													<th class="hidden-480">结束时间</th>
+													<th >状态</th>
+
+													<th></th>
+												</tr>
+											</thead>
+
+											<tbody>
+												
+											 {volist name="homeworks" id="vo" key="key"}
+												<tr>
+													<td>{$key}</td>
+													<td><a href="#">{$vo.name}</a></td>
+													<td class="hidden-480">{$vo.course_id|getCourseName}</td>
+													<td class="hidden-480">{$vo.start_time|date="y-m-d h:i",###}</td>
+													<td class="hidden-480">{$vo.end_time|date="y-m-d h:i",###}</td>
+													<td >
+														{$vo.id,$studentid|answerstatus=###}
+													</td>
+
+													<td>
+														<div class="hidden-sm hidden-xs btn-group">
+																						
+															<a href="{$urlpath}/{$vo.course_id}/{$vo.id}/{$studentnum}/index.html" target="_blank"  class="btn btn-xs btn-info"  title="在浏览器中查看作业">
+																<i class="ace-icon fa fa-pencil bigger-120"></i>
+															</a>
+														
+														</div>
+
+														<div class="hidden-md hidden-lg">
+															<div class="inline pos-rel">
+																<button class="btn btn-minier btn-primary dropdown-toggle" data-toggle="dropdown" data-position="auto">
+																	<i class="ace-icon fa fa-cog icon-only bigger-110"></i>
+																</button>
+
+																<ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
+																	<li>
+																		<a href="{$urlpath}/{$vo.course_id}/{$vo.id}/{$studentnum}/index.html" class="tooltip-info" data-rel="tooltip" title="在浏览器中查看">
+																			<span class="blue">
+																				<i class="ace-icon fa fa-search-plus bigger-120"></i>
+																			</span>
+																		</a>
+																	</li>
+
+																	
+																</ul>
+															</div>
+														</div>
+													</td>
+												</tr>
+												
+											{/volist}
+											</tbody>	
+										</table>	
+											
+										{:pagination($homeworks)}
+											
+											
+								<!-- PAGE CONTENT ENDS -->
+							</div><!-- /.col -->
+						</div><!-- /.row -->
+					</div><!-- /.page-content -->
+				</div>
+			</div><!-- /.main-content -->
+
+
+			{include file="public/footer"}
+		</div><!-- /.main-container -->
+		{include file="public/script"}
+		
+	
+		<!-- inline scripts related to this page -->
+
+		
+	</body>
+</html>

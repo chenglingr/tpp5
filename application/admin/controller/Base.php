@@ -26,6 +26,7 @@ class Base extends Controller
 	public function isLogin()
 	{
 		$user=$this->getLoginUser();
+		
 		if($user&&$user->id){
 			return true;
 		}
@@ -35,7 +36,7 @@ class Base extends Controller
 
  		 $usertype= session('AccountType','','admin');
  		 if(!isset($usertype)){return '匿名';}
- 		 if($usertype==0){return '管理员';}
+ 		 if($usertype==3){return '管理员';}
  		 if($usertype==1){return '教师';}
  		 if($usertype==2){return '学生';}
    }
@@ -71,8 +72,13 @@ class Base extends Controller
 		//利用tp5 校验
 		//获取控制器
 		$model=request()->controller();
-
-		$res=model($model)->save(['status'=>$status],['id'=>$id]);
+		//超级管理员不可以被删
+		
+		if($model=="Admin"){
+			$res=model($model)->save(['status'=>$status],['id'=>$id,'num'=>['<>','superadmin']]);
+		}
+		else{
+		$res=model($model)->save(['status'=>$status],['id'=>$id]);}
 		if($res){
 			$this->success('更新成功');
 		}

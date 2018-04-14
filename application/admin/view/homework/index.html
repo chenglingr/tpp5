@@ -2,7 +2,7 @@
 <html lang="en">
 	<head>
 		
-		<title>Blank Page - Ace Admin</title>
+		<title>我发布的作业</title>
 		{include file="public/header"}
 		
 	</head>
@@ -24,13 +24,13 @@
 						<ul class="breadcrumb">
 							<li>
 								<i class="ace-icon fa fa-home home-icon"></i>
-								<a href="#">首页</a>
+								<a href="{:url('admin/homework/index')}">首页</a>
 							</li>
 
 							<li>
-								<a href="#">作业</a>
+								<a href="{:url('admin/homework/index')}">作业</a>
 							</li>
-							<li class="active">列表</li>
+							<li class="active">未结束作业</li>
 						</ul><!-- /.breadcrumb -->
 
 						<div class="nav-search" id="nav-search">
@@ -52,11 +52,11 @@
 										<table id="simple-table" class="table  table-bordered table-hover">
 											<thead>
 												<tr>
-													<th>工号</th>
-													<th>用户名</th>
-													<th class="hidden-480">邮箱</th>
-													<th class="hidden-480">电话</th>
-													<th class="hidden-480">注册时间</th>
+													<th>编号</th>
+													<th>作业名</th>
+													<th class="hidden-480">课程</th>
+													<th class="hidden-480">开始时间</th>
+													<th class="hidden-480">结束时间</th>
 													<th >状态</th>
 
 													<th></th>
@@ -65,32 +65,31 @@
 
 											<tbody>
 												
-											 
+											 {volist name="homeworks" id="vo" key="key"}
 												<tr>
-													<td><a href="#"></a>	</td>
-													<td></td>
-													<td class="hidden-480"></td>
-													<td class="hidden-480"></td>
-													<td class="hidden-480"></td>
+													<td>{$key}</td>
+													<td><a href="#">{$vo.name}</a></td>
+													<td class="hidden-480">{$vo.course_id|getCourseName}</td>
+													<td class="hidden-480">{$vo.start_time|date="y-m-d h:i",###}</td>
+													<td class="hidden-480">{$vo.end_time|date="y-m-d h:i",###}</td>
 													<td >
-														
+														{$vo.status|status}
 													</td>
 
 													<td>
 														<div class="hidden-sm hidden-xs btn-group">
-															<button class="btn btn-xs btn-success">
+											
+															<a href="{:url('homework/gotoelfinder',['id'=>$vo.id])}" target="_blank" class="btn btn-xs btn-success" title="管理作业素材">
 																<i class="ace-icon fa fa-check bigger-120"></i>
-															</button>
-
-															<button class="btn btn-xs btn-info">
+															</a>										
+															<a href="{:url('homework/gethomeworklist',['id'=>$vo.id])}" target="_blank" class="btn btn-xs btn-info" title="在浏览器中查看学生作业">
 																<i class="ace-icon fa fa-pencil bigger-120"></i>
-															</button>
-
-															<a href="" class="btn btn-xs btn-danger">
+															</a>	
+														<a href="{:url('homework/status',['id'=>$vo.id,'status'=>0])}" class="btn btn-xs btn-danger" title="删除">
 																<i class="ace-icon fa fa-trash-o bigger-120"></i>
 															</a>
 
-															<a href=""  class="btn btn-xs btn-warning">
+															<a href="{:url('homework/status',['id'=>$vo.id,'status'=>2])}"  class="btn btn-xs btn-warning" title="禁用">
 																<i class="ace-icon fa fa-flag bigger-120"></i>
 															</a>
 														</div>
@@ -103,7 +102,7 @@
 
 																<ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
 																	<li>
-																		<a href="#" class="tooltip-info" data-rel="tooltip" title="View">
+																		<a href="{:url('homework/gethomeworklist',['id'=>$vo.id])}" class="tooltip-info" data-rel="tooltip" title="在浏览器中查看学生作业">
 																			<span class="blue">
 																				<i class="ace-icon fa fa-search-plus bigger-120"></i>
 																			</span>
@@ -111,17 +110,18 @@
 																	</li>
 
 																	<li>
-																		<a href="#" class="tooltip-success" data-rel="tooltip" title="Edit">
-																			<span class="green">
-																				<i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
+																		<a href="{:url('homework/status',['id'=>$vo.id,'status'=>0])}" class="tooltip-success" data-rel="tooltip" title="删除">
+																			<span class="red">
+																				
+																					<i class="ace-icon fa fa-trash-o bigger-120"></i>
 																			</span>
 																		</a>
 																	</li>
 
 																	<li>
-																		<a href="#" class="tooltip-error" data-rel="tooltip" title="Delete">
-																			<span class="red">
-																				<i class="ace-icon fa fa-trash-o bigger-120"></i>
+																		<a href="{:url('homework/status',['id'=>$vo.id,'status'=>2])}" class="tooltip-error" data-rel="tooltip" title="禁用">
+																			<span class="warning">
+																			<i class="ace-icon fa fa-flag bigger-120"></i>
 																			</span>
 																		</a>
 																	</li>
@@ -131,11 +131,12 @@
 													</td>
 												</tr>
 												
-											
+											{/volist}
 											</tbody>	
 										</table>	
 											
-												<span style="color: red;font-size: 24px;">没有数据</span>
+										{:pagination($homeworks)}
+											
 											
 								<!-- PAGE CONTENT ENDS -->
 							</div><!-- /.col -->

@@ -1,0 +1,22 @@
+http://www.cnblogs.com/dongsheng/category/388216.html
+
+XAMPP Control Panel 3.2.2 （Apache 2.4.29, MariaDB 10.1.28, PHP 5.6.32, phpMyAdmin 4.7.4）、navicat 11.0
+
+http://blog.csdn.net/kevindgk/article/details/51606925
+
+xdebug
+https://blog.csdn.net/u010574567/article/details/52074231
+https://jingyan.baidu.com/album/91f5db1b3cab9f1c7f05e329.html?picindex=3
+完整
+https://xdebug.org/wizard.php
+https://www.cnblogs.com/jewave/p/5721103.html
+
+回到sublime的php代码界面
+按Ctrl+Shift+F9启动调试，
+回到chrome按F5刷新，然后到sublime界面会看到如下图调试代码
+
+
+按ctrl+shif+F5执行到下个断点，
+ctrl+shif+F6执行下一句代码。
+
+sublime退出xdebug按shift+alt+1

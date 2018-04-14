@@ -7,3 +7,4 @@ $(".submenu li a").each(function() {
 　　　　$(this).parent("li").addClass("active");
 　　}
 });
+

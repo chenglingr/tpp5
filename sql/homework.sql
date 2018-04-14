@@ -14,6 +14,8 @@ primary key(`id`),
 unique key num(`num`)
 )engine=innodb AUTO_INCREMENT=1 default charset=utf8;
 
+INSERT INTO `work_admin`(num,username,password,code,tel,email,status,create_time,update_time) 
+VALUES ( 'superadmin', '程程', '3993a05d83718bac2049649aea3c49ba', '3643', '15976021214', '286863096@qq.com', '1', '1521725536', '1521951698');
 #教师表
 create table `work_teacher`(
 `id` int(11) unsigned not null AUTO_INCREMENT,
@@ -36,6 +38,7 @@ create table `work_grade`(
 `id` int(11) unsigned not null AUTO_INCREMENT,
 `name` varchar(20) not null default '',
 `depart` varchar(20) not null default '信息工程学院',
+`remark` text  default '',
 `status` tinyint(1)  not null default 1,
 `create_time` int(11)  unsigned not null default 0,
 `update_time` int(11)  unsigned not null default 0,
@@ -51,6 +54,7 @@ create table `work_course`(
 `end_time` int(11) not null default 0,
 `teacher_id` int(11) not null default 0,
 `grade_id` int(11) not null default 0,
+`remark` text  default '',
 `status` tinyint(1)  not null default 1,
 `create_time` int(11)  unsigned not null default 0,
 `update_time` int(11)  unsigned not null default 0,
@@ -83,7 +87,7 @@ key grade_id(`grade_id`)
 create table `work_notice`(
 `id` int(11) unsigned not null AUTO_INCREMENT,
 `name` varchar(50) not null default '',
-`content` text not null default '',
+`content` text  default '',
 `admin_id` int(11) not null default 0,
 `status` tinyint(1)  not null default 1,
 `create_time` int(11)  unsigned not null default 0,
@@ -100,7 +104,7 @@ create table `work_homework`(
 `demohelp` varchar(20) not null default '素材.zip',
 `demourl` varchar(30) not null default 'index.html',
 `demoimage` varchar(20) not null default 'image.html',
-`remark` text not null default '',
+`remark` text  default '',
 `answer` varchar(20) not null default '参考答案.zip',
 `start_time` int(11) not null default 0,
 `end_time` int(11) not null default 0,
@@ -121,7 +125,7 @@ create table `work_answer`(
 `student_id` int(11) not null default 0,
 `answerimage` varchar(20) not null default '效果图.png',
 `answerurl` varchar(30) not null default 'index.html',
-`remark` text not null default '',
+`remark` text  default '',
 `score` int(11) not null default 0,
 `comment` text not null default '',
 `up` int(11) not null default 0,

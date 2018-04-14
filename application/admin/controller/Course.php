@@ -80,10 +80,17 @@ class Course extends Base{
 			'end_time'=>strtotime($data['end_time']),			
 			'teacher_id'=>$data['teacher_id'],
 			'grade_id'=>$data['grade_id'],		
+			'remark'=>$data['remark'],
 		];
 		$courseID=model('Course')->add($courseData);
 		if(!$courseID){
 			$this->error('添加失败');
+		}
+//创建课程id的文件夹
+		define(ROOT_PATH, __DIR__);
+		$realpath=ROOT_PATH . '/elFinder/files/'.$courseID;
+		if(!is_dir($realpath)){
+			mkdir($realpath);
 		}
 		$this->success("添加成功",url('course/index',['gradeid'=>$data['grade_id'],'teacherid'=>$data['teacher_id']]));
 		//$this->success("申请成功",url('register/waiting',['id'=>$bisId]));

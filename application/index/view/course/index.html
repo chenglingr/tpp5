@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <title>最热课程</title>
+	{include file="public/header"}
+    <style type="text/css">
+        .my:hover{
+            background:#DCDCDC;
+            transition: 1s;
+        }
+        .my{background: #F8F8FF;border: 2px white solid;}
+    </style>
+  
+</head>
+<body>
+
+	{include file="public/nav"}
+	
+	
+    <div class="container-projects">
+        <div class="container">
+            <div class="page-header" id="projects">
+                <div>
+                    <h2 class="text-primary">{if condition="$gradename"}{$gradename}---{/if}热门课程</h2>
+                </div>
+                <div id="chart"></div>
+                <div>
+                    <h2 class="text-primary">最近活跃的课程,可查看对应的作业</h2>
+                </div>
+                <div class="row" style="padding-top:40px;">
+                    {volist name="courses" id="vo"}
+                    <div class="col-md-4 col-sm-6 col-xs-12 my">
+                        
+                        <h3 class="text-primary">{$vo.name}</h3>
+                        <p class="text-justify">{$vo.remark|substr=0,100}</p> 
+                        <p>{$vo.grade_id|getGradeName}--{$vo.teacher_id|getTeacherName}老师</p>
+                        <P>{$vo.start_time|date="y-m-d h:i",###}---{$vo.end_time|date="y-m-d h:i",###}</P>
+                        <p align="right">
+                        <a class="btn btn-default"  href="{:url('homework/index',['id'=>$vo.id])}"  style="background-color: #2098D1; color: #fff;">查看作业</a></p>
+                    </div>
+                   {/volist}
+                </div>
+                {:pagination($courses)}
+            </div>
+        </div>
+    </div>
+
+
+
+	{include file="public/footer"}
+
+
+
+</body>
+</html>

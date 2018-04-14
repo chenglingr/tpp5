@@ -1,0 +1,13 @@
+ <h2 class="text-primary">热门课程</h2>
+  {volist name="courses" id="vo" key="key"}
+                        <div class="row">
+                            <div class="col-md-2">
+                                <h3><span class="about-square text-center"></i>{$key}</span></h3>
+                            </div>
+                            <div class="col-md-10">
+                                <h3 class="text-primary"><a href="{:url('homework/index',['id'=>$vo.id])}">{$vo.name}</a></h3>
+                             <span><a href="{:url('course/index',['id'=>$vo.grade_id])}" >{$vo.grade_id|getGradeName}</a></span>
+                            </div>
+                        </div>
+   {/volist}
+                       

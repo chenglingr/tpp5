@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <title>最热班级</title>
+	{include file="public/header"}
+    <style type="text/css">
+        .my{
+            background-color: #4B4B4B;
+            color: #fff;
+        }
+         .my1:hover .my{
+           
+            opacity: 0.6;
+            transition: 1s;
+        }
+
+    </style>
+           
+  
+</head>
+<body>
+
+	{include file="public/nav"}
+	
+    <div class="container-services">
+        <div class="container">
+            <div class="page-header" id="services">
+                 <h2 class="text-primary">热门班级</h2>
+                 <h2 class="text-primary">最近活跃的班级,可查看对应的课程</h2>
+                <div class="row">
+                    {volist name="grades" id="vo"}
+                    <div class="col-md-3 col-sm-6 col-xs-12 my1" style="padding: 5px;">
+                        <div class="col-md-12 text-center my">
+                            <br />
+                            <i class="fa fa-money fa-3x" aria-hidden="true"></i>
+                            <h2>{$vo.name}</h2>
+                            <br />
+                        </div>
+                        <div class="col-md-12 my" >
+                            <p>{$vo.depart}</p>
+                            <p class="text-justify">{$vo.remark|substr=0,100}</p>
+                            <br />
+                             <p align="right">
+                            <a class="btn btn-default" href="{:url('course/index',['id'=>$vo.id])}" style="background-color: #2098D1; color: #fff;">查看课程</a></p>
+                           
+                         
+                        </div>
+                    </div>
+                  {/volist}
+                </div>
+                 {:pagination($grades)}
+                
+            </div>
+        </div>
+    </div>
+
+
+
+	{include file="public/footer"}
+
+
+
+</body>
+</html>
