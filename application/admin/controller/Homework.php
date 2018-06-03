@@ -48,7 +48,9 @@ class HomeWork extends BaseTeacher{
         $this->assign('homeworkid',$homeworkid);
         $this->assign('courseid', $courseid);
 
-		return 	$this->fetch('',[		
+		return 	$this->fetch('',[	
+			'homeworkid'=>$homeworkid,
+			'homeworkname'=> $homework['name'],
 			'students'=>$students,
 			'urlpath'=>request()->domain().'/tpp5/elfinder/files/'. $courseid.'/'.$homeworkid,
 		]);
@@ -135,6 +137,25 @@ class HomeWork extends BaseTeacher{
 		}
 		$this->success("添加成功",url('homework/index'));
 	}
-
+	public function setScore()
+	{
+		 if (!request()->isAjax()){
+          
+           return ;
+        }
+        $sid=input('post.sid');
+        $hid=input('post.hid');
+        $score=input('post.score');
+        $data=['student_id'=>$sid,'homework_id'=>$hid,'score'=>$score];
+        
+        $result=model('Answer')->setScore($data);
+        if($result>0){
+        	 $data1=['info'=>'评判成功','status'=>1,];  
+        }
+       else{
+       		$data1=['info'=>'未交作业,评判失败','status'=>0,];  
+       }
+        return json_encode($data1);
+	}
 
 }

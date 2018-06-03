@@ -102,4 +102,5 @@ class Answer extends BaseStudent{
 		}
 		$this->success("提交作业成功，请确保文件已上传",url('answer/index'));
 	}
+
 }

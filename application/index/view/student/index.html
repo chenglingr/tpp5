@@ -9,6 +9,7 @@
             transition: 1s;
         }
         .my{background: #F8F8FF;border: 2px white solid}
+        .ra{border-radius: 5px;}
     </style>
 </head>
 <body>
@@ -32,7 +33,7 @@
                         <hr>
                         
                         <div style="padding-top:2px; padding-bottom:20px;">
-                            <h2 class="text-primary">学生作品</h2>
+                            <h2 class="text-primary">学生作品</h2><input type="hidden" id="hid"   value="{$homework->id}" >
                         </div>
                         <div class="row" style="padding-top: 2px;">
                         {volist name="students" id="vo"}
@@ -44,6 +45,18 @@
                                     {$homework->id,$vo.id,$courseid,$vo.num|answerstatusindex=###}
                                  <a class="btn btn-default" href="{$urlpath}/{$vo.num}/index.html" target="_blank" style="background-color: #2098D1; color: #fff;">查看学生作品</a>
 
+                                </p>
+                                <p>
+
+
+                                    <button type="button" class="btn btn-success ra">
+                                        <span id="{$vo.id}" class="glyphicon glyphicon-thumbs-up up"></span>&nbsp;<span class="numup">{$homework->id,$vo.id|upnum=###}</span>
+                                    </button>
+                                     <button type="button" class="btn btn-warning ra">
+                                        <span id="{$vo.id}" class="glyphicon glyphicon-thumbs-down down"></span>&nbsp;<span class="numdown">{$homework->id,$vo.id|downnum=###}</span>
+                                    </button>
+                                   
+                                    
                                 </p>
                             </div>
                         {/volist}  
@@ -58,7 +71,87 @@
 
 
 	{include file="public/footer"}
+    <script type="text/javascript" src="__STATIC__/assets/js/bootbox.js"></script>
+    <script type="text/javascript">
+    $().ready(function(){
 
+        $(".up").click(function() {
+
+            var Oa=$(this);
+            var id=Oa.attr('id');//获取id属性
+           var vl= Oa.next(".numup").text();
+
+           // var vl=$(".numup").text();
+            hid=$("#hid").val()
+            vl=parseInt(vl)+1;
+
+            $.ajax({
+                url: "{:url('student/up')}",
+                data: {
+                    sid:id, 
+                    hid:hid, 
+                },
+                async: true,   //是否为异步请求
+                cache: false,  //是否缓存结果
+                type: "POST", //请求方式为POST
+                dataType: "json",   //服务器返回的数据是什么类型
+                success: function(data){  
+                     var data = JSON.parse(data);
+                      if(data.status==1){ 
+                         //   alert(data.info);//模拟异步数据加1
+                            
+                           // $(".numup").text(vl);//页面元素加1
+                            bootbox.alert({ size: "small", title: "点赞成功",  message:data.info  });
+                            Oa.next(".numup").text(vl);
+                           
+                        }
+                       else{
+                        bootbox.alert({ size: "small", title: "点赞失败",  message:data.info  });
+                    }
+                }
+              });
+        }); 
+
+         $(".down").click(function() {
+
+            var Oa=$(this);
+            var id=Oa.attr('id');//获取id属性
+           var vl= Oa.next(".numdown").text();
+
+           // var vl=$(".numup").text();
+            hid=$("#hid").val()
+            vl=parseInt(vl)+1;
+
+            $.ajax({
+                url: "{:url('student/down')}",
+                data: {
+                    sid:id, 
+                    hid:hid, 
+                },
+                async: true,   //是否为异步请求
+                cache: false,  //是否缓存结果
+                type: "POST", //请求方式为POST
+                dataType: "json",   //服务器返回的数据是什么类型
+                success: function(data){  
+                     var data = JSON.parse(data);
+                      if(data.status==1){ 
+                         //   alert(data.info);//模拟异步数据加1
+                            
+                           // $(".numup").text(vl);//页面元素加1
+                            bootbox.alert({ size: "small", title: "送臭鸡蛋成功",  message:data.info  });
+                            Oa.next(".numdown").text(vl);
+                           
+                        }
+                       else{
+                        bootbox.alert({ size: "small", title: "送臭鸡蛋失败",  message:data.info  });
+                    }
+                }
+              });
+        }); 
+
+    });
+
+    </script>
 
 
 </body>

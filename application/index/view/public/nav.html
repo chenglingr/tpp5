@@ -20,6 +20,7 @@
                     <li><a href="{:url('grade/index')}">热门班级</a></li> 
                    
                     <li><a href="{:url('notice/index')}">公告</a></li>
+                    <li class="hidden-xs"><a href="{:url('index/edit')}" target="_blank">在线编辑</a></li>
                      {if condition="$user"}
                       <li><a href="{:url('admin/login/index')}">欢迎您，{$user->username}</a></li>
                      

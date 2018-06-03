@@ -29,17 +29,29 @@ primary key(`id`),
 unique key username(`username`)
 )engine=innodb AUTO_INCREMENT=1 default charset=utf8;
 
-
-#课程表
-create table `work_course`(
+#类别表
+create table `work_category`(
+`id` int(11) unsigned not null AUTO_INCREMENT,
+`categoryname` varchar(30) not null default  '' COMMENT '类别名',
+`status` tinyint(1)  not null default 1  COMMENT '状态 1正常 0删除 2私有 3禁用 ',
+`create_time` int(11)  unsigned not null default 0  COMMENT '创建时间',
+`update_time` int(11)  unsigned not null default 0  COMMENT '更新时间',
+primary key(`id`),
+unique key categoryname(`categoryname`)
+)engine=innodb AUTO_INCREMENT=1 default charset=utf8;
+#文章表
+create table `work_article`(
 `id` int(11) unsigned not null AUTO_INCREMENT,
 `title` varchar(50) not null default '',
 `author_id` int(11) not null default 0,
+`category_id` int(11) not null default 0,
 `description` varchar(250) not null default '',
 `content` text not null default '',
+`up` int(11) not null default 0,
 `status` tinyint(1)  not null default 1,
 `create_time` int(11)  unsigned not null default 0,
 `update_time` int(11)  unsigned not null default 0,
 primary key(`id`),
-key author_id(`author_id`)
+key author_id(`author_id`),
+key category_id(`category_id`)
 )engine=innodb AUTO_INCREMENT=1 default charset=utf8;

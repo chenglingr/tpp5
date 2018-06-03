@@ -1,0 +1,105 @@
+img
+{
+	max-width:100%;
+}
+
+
+.serve
+{
+	text-align:center;
+	margin:2% 0;
+}
+.s_title h1
+{
+	font-size:40px;
+	margin:2% 0 1% 0;
+}
+.s_title p
+{
+ 	color:gray;
+	margin:1% 0;
+}
+.s_title p span
+{
+	color:#FF6000;
+}
+.s_title .sever_red
+{
+	color:red;
+}
+.s_main
+{
+	color:gray;
+	display:flex;
+	flex-wrap:wrap;
+	align-items:flex-start;
+	justify-content:center;
+}
+.s_m
+{
+	width:400px;
+	margin:1% 2%;
+}
+.sheji
+{
+	text-align:center;
+	color:white;
+	background-color:#222222;
+	padding:1% 0 5% 0;
+}
+.sheji h1
+{
+	font-size:40px;
+	margin:1% 0 1% 0;
+}
+.sheji_main
+{
+	display:flex;
+	align-items:center;
+	flex-wrap:nowrap;
+	flex-direction:column;
+}
+.sheji .more
+{
+	width:180px;
+	margin:0 auto;
+	height:40px;
+	line-height:20px;
+	text-align:center;
+	border-radius:15px;
+	background-color:#ccc;
+	padding:10px;
+}
+.sheji .more a
+{
+	font-size:20px;
+	color:gray;
+}
+.kehu .kh_title
+{
+	text-align:center;
+}
+.kehu .kh_title h1
+{
+	font-size:40px;
+	margin:2% 0 1% 0;
+}
+.kehu .kh_title p
+{
+	color:gray;
+}
+.kehu_main
+{
+	display:flex;
+	flex-wrap:wrap;
+	justify-content:center;
+}
+.kehu_main img
+{
+	margin:2%;
+}
+#banner img
+{
+	width:90%;
+	margin:0 auto;
+}

@@ -103,7 +103,7 @@
 			}
 		},
 		o = {
-			locale: "en",
+			locale: "zh-CN",
 			backdrop: "static",
 			animate: !0,
 			className: null,

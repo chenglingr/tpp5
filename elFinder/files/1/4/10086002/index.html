@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Medium-design studio-首页</title>
+	<link rel="shortcut icon" href="images/logo2.gif">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">	
+	<link rel="stylesheet" href="css/font-awesome.min.css" />
+		<script src="js/jquery-3.2.1.min.js"></script>
+		<script>
+			$(function(){
+				$(".phone").click(function(){
+					$(".nav ul").slideToggle();
+				})
+
+				// $(window).resize(function(){
+				// 	if($(this).width()>768){
+				// 		$(".nav ul").show();
+				// 	}
+				// })
+			})
+		</script>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/index.css">
+	<script src="js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="header" id="header">
+		<div class="logo">
+			<img src="images/logo.png" alt="">
+		</div>
+		<div class="nav">
+			<div class="phone">
+				<i class="fa fa-bars"></i>
+			</div>
+			<ul>
+				<li><a href="index.html" class="check">首页</a></li>
+				<li><a href="#">关于我们</a></li>
+				<li><a href="#">新闻动态</a></li>
+				<li><a href="#">作品展示</a></li>
+				<li><a href="serves.html">服务项目</a></li>
+				<li class="last_list"><a href="#">经典客户</a></li>
+				<li class="last_list"><a href="contact.html">联系我们</a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="banner" class="carousel slide">
+	    <div class="carousel-inner">
+	        <div class="item active">
+	            <img src="images/banner1.jpg" alt="First slide">
+	        </div>
+	        <div class="item">
+	            <img src="images/banner2.jpg" alt="Second slide">
+	        </div>
+	        <div class="item">
+	            <img src="images/banner3.jpg" alt="Third slide">
+	        </div>
+	    </div>
+	    <a class="carousel-control left" href="#banner" 
+	        data-slide="prev"></a>
+	    <a class="carousel-control right" href="#banner" 
+	        data-slide="next"></a>
+	</div>
+	<div class="serve">
+		<div class="s_title">
+			<h1>专业的视觉动画设计服务</h1>
+			<p><span>我们</span>是一家在中国为用户提供<span class="sever_red">视觉动画设计</span>解决方案的公司</p>
+		</div>
+		<div class="s_main">
+			<div class="s_m">
+				<img src="images/sever1.jpg" alt="">
+				<h3>模型建立服务</h3>
+				<p>根据您提供的设计图纸，建立模型，并且可以根据您的需求进行多次更改，以达到最好的呈现效果。将最为规范化的模型建立和立体化的视觉符号，传达给您的客户。</p>
+			</div>
+			<div class="s_m">
+				<img src="images/sever2.jpg" alt="">
+				<h3>场景漫游服务</h3>
+				<p>一改以往的效果图展现方式，将涉及的所有细节进行展示，不仅可以给人以漫游在真实空间的体验，还可以进行细节效果的更改以达到100%的设计完成度。</p>
+			</div>
+			<div class="s_m">
+				<img src="images/sever3.jpg" alt="">
+				<h3>视频加工服务</h3>
+				<p>我们同时提供将完成的设计将进行影视加工处理，并且加以剪辑，渲染，配乐，将您的设计以影视级别的视频效果呈献给您的客户。</p>
+			</div>
+		</div>
+	</div>
+	<div class="sheji">
+		<h1>最新作品</h1>
+		<p>这些是我们最新的客户作品，您也可以拥有这样的作品</p>
+		<div class="sheji_main">
+			<a href=""><img src="images/sheji1.jpg" alt=""></a>
+			<a href=""><img src="images/sheji2.jpg" alt=""></a>
+			<a href=""><img src="images/sheji3.jpg" alt=""></a>
+		</div>
+		<div class="more">
+			<a href="">查看更多案例</a>
+		</div>
+	</div>
+	<div class="kehu">
+		<div class="kh_title">
+			<h1>经典客户</h1>
+			<p>您可以像他们一样信赖我们的服务</p>
+		</div>
+		<div class="kehu_main">
+			<img src="images/kehu1.jpg" alt="">
+			<img src="images/kehu2.jpg" alt="">
+			<img src="images/kehu3.jpg" alt="">
+			<img src="images/kehu4.jpg" alt="">
+			<img src="images/kehu5.jpg" alt="">
+			<img src="images/kehu6.jpg" alt="">
+		</div>
+	</div>
+	<div class="fixed">
+		<a href="#header"><i class="fa fa-arrow-up"></i></a>
+		<a href=""><i class="fa fa-share-alt"></i></a>
+	</div>
+	<div class="footer">
+		<div class="f_top">
+			<a href="">拨打电话</a>
+			<a href="">地图导航</a>
+			<a href="">在线留言</a>
+		</div>
+		<div class="f_bottom">
+			<p>关注我们获取更多信息<img src="images/wb.png" alt=""><img src="images/wx.png" alt=""></p>
+			<p>&copy; mediumdesign.cn All rights reserved.</p>
+			<p>网站在突唯阿tuweia.cn创建</p>
+			<p class="f_b_white">前往突唯阿tuweia.cn，免费创建你的响应式网站</p>
+		</div>
+	</div>
+	
+</body>
+</html>

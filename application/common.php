@@ -109,3 +109,16 @@ function isEnd($endtime){
 	}
 	return $str;
 }
+function upnum($homeworkid,$studentid){
+	$num=model('Answer')->getUpCountbyHomeworkIdStudentId($homeworkid,$studentid);
+    return $num;
+}
+function downnum($homeworkid,$studentid){
+	$num=model('Answer')->getDownCountbyHomeworkIdStudentId($homeworkid,$studentid);
+    return $num;
+}
+function getScore($homeworkid,$studentid)
+{
+	$score=model('Answer')->getScorebyHomeworkIdStudentId($homeworkid,$studentid);
+	return $score;
+}
